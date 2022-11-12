@@ -1,0 +1,52 @@
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  padding: 10px 0px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bg {
+  background-color: #f5f5f5;
+}
+
+.footer-bg-trans {
+  background-color: transparent;
+}
+
+.footer-bg .footer-copyright {
+  margin-left: 35px;
+  color: #131517;
+  opacity: 0.5;
+}
+
+.footer-bg .footer-copyright > span {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.footer-bg-trans .footer-copyright {
+  margin-left: 35px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.footer-bg-trans .footer-copyright > span {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.footer-app-menu {
+  margin-right: 35px;
+  line-height: 10px;
+}
+
+.footer-app-menu > a {
+  margin-right: 15px;
+  color: #f4f4f4;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 5px;
+  text-decoration: none;
+}

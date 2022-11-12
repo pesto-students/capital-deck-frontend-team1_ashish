@@ -1,0 +1,64 @@
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  padding: 10px 0px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  color: white;
+  position: fixed;
+  width: 100vw;
+}
+
+.nav-logo {
+  margin-left: 35px;
+}
+
+.nav-menu {
+  margin-right: 35px;
+}
+
+.nav-menu > a {
+  margin-right: 15px;
+  color: #f4f4f4;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.nav-menu > a.active {
+  color: #ffffff;
+  font-weight: bold;
+  position: relative;
+}
+
+.nav-menu > a.active:after {
+  content: '';
+  position: absolute;
+  left: 25%;
+  bottom: -7px;
+  width: 50%;
+  border-bottom: 5px solid #ffffff;
+  border-radius: 5px;
+}
+
+.nav-menu > button {
+  margin-right: 15px;
+  color: #2c3e50;
+  background-color: #ffffff;
+  width: 100px;
+  height: 35px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-menu > button:hover {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  background-color: transparent;
+}

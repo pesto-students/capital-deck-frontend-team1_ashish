@@ -1,0 +1,15 @@
+.form-container .form-label {
+  color: #2c3e50;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0px 0px 20px 0px;
+}
+
+.form-containe .MuiOutlinedInput-input {
+  padding: 10px !important;
+}
+
+.form-containe .MuiFormLabel-root {
+  font-size: 14px !important;
+  line-height: 10px !important;
+}

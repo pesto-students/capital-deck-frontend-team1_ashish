@@ -1,0 +1,51 @@
+.feedback-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 60px;
+}
+
+.feedback-address {
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.feedback-address > div {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.feedback-address > div > p {
+  font-size: 18px;
+  line-height: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0px 0px 0px 15px;
+  width: 400px;
+}
+
+.form-label {
+  color: #2c3e50;
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: 5px solid #2c3e50;
+  padding: 10px 0px;
+  margin: 15px 0px 5px;
+}
+
+.feedback-form .MuiOutlinedInput-input {
+  padding: 10px !important;
+}
+
+.feedback-form .MuiFormLabel-root {
+  font-size: 14px !important;
+  line-height: 10px !important;
+}

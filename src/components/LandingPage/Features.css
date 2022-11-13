@@ -1,0 +1,28 @@
+.feature-section {
+  background-color: #f1f1f1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  padding: 50px 100px;
+}
+
+.features-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.features-container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.features-container > div > p {
+  width: 200px;
+  margin-top: 5px;
+}
+.feature-header {
+  margin: 10px 0px 40px 0px;
+}

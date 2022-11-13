@@ -1,11 +1,16 @@
 import React from 'react';
+import Home from '../components/LandingPage/Home';
+import Features from '../components/LandingPage/Features';
+import Team from '../components/LandingPage/Team';
+import Feedback from '../components/LandingPage/Feedback';
 
 const LandingPage = () => {
   return (
-    <div
-      className='common-container'
-      style={{ height: '2000px', marginTop: '100px', color: 'white' }}>
-      Landing Page
+    <div>
+      <Home />
+      <Features />
+      <Team />
+      <Feedback />
     </div>
   );
 };

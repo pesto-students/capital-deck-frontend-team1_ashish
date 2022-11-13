@@ -9,20 +9,21 @@
   color: white;
   position: fixed;
   width: 100vw;
+  z-index: 111;
 }
 
 .nav-logo {
-  margin-left: 35px;
+  margin-left: 50px;
 }
 
 .nav-menu {
-  margin-right: 35px;
+  margin-right: 50px;
 }
 
 .nav-menu > a {
   margin-right: 15px;
   color: #f4f4f4;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 16px;
   padding: 5px;
   text-decoration: none;
@@ -51,7 +52,7 @@
   width: 100px;
   height: 35px;
   border-radius: 8px;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 14px;
   border: none;
   cursor: pointer;
@@ -61,4 +62,14 @@
   color: #ffffff;
   border: 1px solid #ffffff;
   background-color: transparent;
+}
+
+.stickyNav {
+  position: sticky !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #093e74;
+  transition: all 0.25s ease;
+  z-index: 999;
 }

@@ -1,0 +1,40 @@
+.team-section {
+  background-color: #093e74;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  padding: 50px 100px 70px;
+  color: #ffffff;
+}
+
+.team-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.team-member > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.team-member > div > span > p {
+  text-align: left;
+  margin: 10px 0px 5px 10px;
+}
+
+.team-member > div > span > p.character-role {
+  font-size: 12px;
+}
+
+.team-member > div > span.active-member > img {
+  border: 3px solid #38fdf1;
+  border-radius: 40px;
+}

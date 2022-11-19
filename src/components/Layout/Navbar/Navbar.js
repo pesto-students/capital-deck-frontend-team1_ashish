@@ -11,6 +11,10 @@ const Navbar = () => {
     navMenuInd = 'L';
   } else if (location.pathname === '/signup') {
     navMenuInd = 'S';
+  } else if (location.pathname === '/') {
+    navMenuInd = 'H';
+  } else {
+    navMenuInd = 'E';
   }
 
   useEffect(() => {
@@ -41,7 +45,7 @@ const Navbar = () => {
           <>
             <a href='#Home'>Home</a>
             <a href='#Team'>Our Team</a>
-            <a href='#Feedback'>Conatact Us</a>
+            <a href='#Feedback'>Contact Us</a>
             <button
               type='button'
               onClick={() => {

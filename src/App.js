@@ -5,6 +5,7 @@ import Footer from './components/Layout/Footer/Footer';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import ErrorPage from './pages/ErrorPage';
 import './App.css';
 
 const App = () => {
@@ -12,8 +13,10 @@ const App = () => {
   let appClass = 'app';
   if (location.pathname === '/login' || location.pathname === '/signup') {
     appClass = 'app login-bg';
-  } else {
+  } else if (location.pathname === '/') {
     appClass = 'app home-bg';
+  } else {
+    appClass = 'app login-bg';
   }
 
   return (
@@ -23,7 +26,7 @@ const App = () => {
         <Route path='/' element={<LandingPage />} />
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<Signup />} />
-        <Route path='*' element={<LandingPage />} /> -- For 404 redirection will be changed later
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
       <Footer />
     </div>

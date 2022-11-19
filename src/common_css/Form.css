@@ -13,3 +13,13 @@
   font-size: 14px !important;
   line-height: 10px !important;
 }
+
+.error-container {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  width: 100vw;
+  height: 100vh;
+}

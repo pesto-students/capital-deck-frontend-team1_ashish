@@ -7,9 +7,9 @@ import bgshadeImg from '../../assets/vector18.svg';
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <div id='Home' className='home-container'>
+    <section id='Home' className='section home-section'>
       <div className='home-overviewscreen'>
-        <div className='home-container-bgImage'>
+        <div className='home-section-bgImage'>
           <img src={bgshadeImg} width='1153' height='637' alt='bg-shade' />
         </div>
         <div className='overview-container'>
@@ -29,10 +29,10 @@ const Home = () => {
           </button>
         </div>
         <div className='screen-container'>
-          <img src={screenImg} alt='screen' height={400} width={600} />
+          <img src={screenImg} alt='screen' height={500} width={700} />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

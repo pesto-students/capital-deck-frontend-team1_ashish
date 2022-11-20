@@ -7,7 +7,7 @@ import featureCategory from '../../assets/featureCategory.svg';
 
 const Features = () => {
   return (
-    <div className='feature-section'>
+    <section id='Home' className='section feature-section'>
       <h1 className='feature-header'>Our Features</h1>
       <div className='features-container'>
         <div>
@@ -31,7 +31,7 @@ const Features = () => {
           <p>Similar expenditures can be grouped together to analyze the finance.</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

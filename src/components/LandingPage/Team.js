@@ -6,7 +6,7 @@ import member2Icon from '../../assets/member2.svg';
 
 const Team = () => {
   return (
-    <div id='Team' className='team-section'>
+    <section id='Team' className='section team-section'>
       <h1 className='team-header'>Our Team</h1>
       <div className='team-container'>
         <div className='team-member'>
@@ -29,11 +29,11 @@ const Team = () => {
             </span>
           </div>
         </div>
-        <div>
+        <div className='character-main'>
           <img src={characterImg} width='250' height='250' alt='character' />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

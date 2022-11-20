@@ -1,7 +1,7 @@
 .feedback-section {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 60px;
 }
 
@@ -46,6 +46,62 @@
 }
 
 .feedback-form .MuiFormLabel-root {
-  font-size: 14px !important;
-  line-height: 10px !important;
+  font-size: 12px !important;
+  line-height: 12px !important;
+}
+
+@media (min-height: 2304px) {
+  .feedback-section {
+    padding: 120px 60px;
+  }
+}
+
+@media (max-width: 960px) {
+  .feedback-section {
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    align-items: center;
+  }
+
+  .feedback-form {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .feedback-address > div > p {
+    width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feedback-form {
+    padding: 10px;
+  }
+
+  .feedback-address > div > p {
+    width: 250px;
+  }
+}
+
+@media (max-width: 400px) {
+  .feedback-section {
+    padding: 30px;
+  }
+
+  .feedback-address > div > p {
+    font-size: 14px;
+    line-height: 30px;
+  }
+
+  .feedback-address > div > img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .feedback-address .feedback-logo img {
+    height: 50px;
+    width: 150px;
+  }
 }

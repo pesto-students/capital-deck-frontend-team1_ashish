@@ -20,9 +20,9 @@ const Feedback = () => {
   };
 
   return (
-    <div id='Feedback' className='feedback-section'>
+    <section id='Feedback' className='section feedback-section'>
       <div className='feedback-address'>
-        <div>
+        <div className='feedback-logo'>
           <img src={logo} height='100' width='200' alt='Logo' />
         </div>
         <div>
@@ -75,7 +75,7 @@ const Feedback = () => {
           </Button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

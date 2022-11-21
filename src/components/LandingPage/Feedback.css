@@ -50,6 +50,25 @@
   line-height: 12px !important;
 }
 
+.submit-button {
+  background-color: #e3e3e3;
+  font-weight: bold;
+  border-radius: 8px;
+  width: 120px;
+  color: #093e74;
+  height: 40px;
+  margin: 10px 0px;
+}
+
+.antd-form-item-mod {
+  width: 40vw;
+  margin: 10px 0px;
+}
+
+.antd-form-item-textbox-mod {
+  height: 40px;
+}
+
 @media (min-height: 2304px) {
   .feedback-section {
     padding: 120px 60px;

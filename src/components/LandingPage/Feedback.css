@@ -41,15 +41,6 @@
   margin: 15px 0px 5px;
 }
 
-.feedback-form .MuiOutlinedInput-input {
-  padding: 10px !important;
-}
-
-.feedback-form .MuiFormLabel-root {
-  font-size: 12px !important;
-  line-height: 12px !important;
-}
-
 .submit-button {
   background-color: #e3e3e3;
   font-weight: bold;
@@ -85,6 +76,10 @@
 
   .feedback-form {
     padding: 30px;
+  }
+
+  .antd-form-item-mod {
+    width: 55vw;
   }
 }
 

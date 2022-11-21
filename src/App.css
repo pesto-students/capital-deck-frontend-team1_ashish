@@ -36,3 +36,14 @@ body {
 .home-bg {
   background-color: #ffffff;
 }
+
+.ant-notification-notice {
+  background-color: #84cf2fcf;
+  border: 1px solid #57ff4b;
+}
+
+.ant-notification-notice-message {
+  color: black !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+}

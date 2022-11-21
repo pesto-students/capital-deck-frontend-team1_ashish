@@ -1,22 +1,29 @@
-import React from 'react';
-import './Feedback.css';
-import { TextField, Button } from '@mui/material';
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Button, Form, Input, notification } from 'antd';
+import { baseURL } from '../../util/BaseUrl';
 import logo from '../../assets/capital-deck-logo-d.svg';
 import locationIcon from '../../assets/location-icon.svg';
 import websiteIcon from '../../assets/web-logo.svg';
 import mailIcon from '../../assets/mail-icon.svg';
+import './Feedback.css';
 
 const Feedback = () => {
-  const formStyle = {
-    margin: '15px 0px'
-  };
-  const formBtnStyle = {
-    margin: '10px 0px 10px',
-    backgroundColor: '#E3E3E3',
-    fontWeight: 'bold',
-    borderRadius: '8px',
-    width: '120px',
-    color: '#093E74'
+  const [formInput, setFormInput] = useState({ name: '', email: '', message: '' });
+  const [form] = Form.useForm();
+  const formItemLayout = null;
+
+  const handleSubmit = () => {
+    axios.post(`${baseURL}/feedback`, formInput).then((response) => {
+      if (response.status === 200) {
+        notification.open({
+          message: 'Thank you for sharing this with us',
+          description: ''
+        });
+        form.resetFields();
+      }
+    });
   };
 
   return (
@@ -39,41 +46,69 @@ const Feedback = () => {
         </div>
       </div>
       <div className='feedback-form'>
-        <p className='form-label'>Give us a Message</p>
-        <form>
-          <TextField
-            style={formStyle}
-            variant='outlined'
-            required
-            fullWidth
-            id='name'
+        <p className='form-label'>Give us a message</p>
+        <Form {...formItemLayout} layout='vertical' form={form} onFinish={handleSubmit}>
+          <Form.Item
             label='Your Name'
-          />
-          <TextField
-            style={formStyle}
-            variant='outlined'
-            required
-            fullWidth
-            name='password'
+            name='name'
+            className='antd-form-item-mod'
+            rules={[
+              {
+                required: true,
+                message: 'Please enter your name!'
+              }
+            ]}>
+            <Input
+              value={formInput.name}
+              className='antd-form-item-textbox-mod'
+              onChange={(e) => {
+                setFormInput({
+                  ...formInput,
+                  name: e.target.value
+                });
+              }}
+            />
+          </Form.Item>
+          <Form.Item
             label='Your Email'
-            type='email'
-            id='email'
-          />
-          <TextField
-            style={formStyle}
-            variant='outlined'
-            multiline
-            rows={2}
-            required
-            fullWidth
-            label='Message'
-          />
-        </form>
-        <div>
-          <Button style={formBtnStyle} type='submit' fullWidth variant='contained' color='primary'>
-            Send
-          </Button>
-        </div>
+            name='email'
+            className='antd-form-item-mod'
+            rules={[
+              {
+                required: true,
+                message: 'Please enter your email!',
+                type: 'email'
+              }
+            ]}>
+            <Input
+              value={formInput.email}
+              className='antd-form-item-textbox-mod'
+              onChange={(e) => {
+                setFormInput({
+                  ...formInput,
+                  email: e.target.value
+                });
+              }}
+            />
+          </Form.Item>
+          <Form.Item label='Message' name='message' className='antd-form-item-mod'>
+            <Input.TextArea
+              rows={3}
+              value={formInput.message}
+              onChange={(e) => {
+                setFormInput({
+                  ...formInput,
+                  message: e.target.value
+                });
+              }}
+            />
+          </Form.Item>
+          <Form.Item>
+            <Button htmlType='submit' className='submit-button'>
+              SEND
+            </Button>
+          </Form.Item>
+        </Form>
       </div>
     </section>
   );

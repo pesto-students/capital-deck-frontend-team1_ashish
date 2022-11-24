@@ -1,6 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
-import { Button, Form, Input } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Button, Form, Input, notification } from 'antd';
+import { register, reset } from '../../features/auth/authSlice';
+import Spinner from '../Common/Spinner';
 import '../../common_css/Form.css';
 
 const SignUpForm = () => {
@@ -8,15 +12,49 @@ const SignUpForm = () => {
     name: '',
     email: '',
     password: '',
-    cpassword: ''
+    cpassword: '',
+    dob: ''
   });
   const [form] = Form.useForm();
   const formItemLayout = null;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (isError) {
+      notification.open({
+        message,
+        description: ''
+      });
+    }
+
+    if (isSuccess || user) {
+      navigate('/dashboard');
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
+  const handleSubmit = () => {
+    if (formInput.password !== formInput.cpassword) {
+      notification.open({
+        message: 'Passwords do not match',
+        description: ''
+      });
+    } else {
+      dispatch(register(formInput));
+    }
+  };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div className='form-container'>
       <p className='login-form-label'>Sign Up</p>
-      <Form {...formItemLayout} layout='vertical' form={form}>
+      <Form {...formItemLayout} layout='vertical' form={form} onFinish={handleSubmit}>
         <Form.Item
           label='Name'
           name='name'
@@ -108,70 +146,6 @@ const SignUpForm = () => {
           </Button>
         </Form.Item>
       </Form>
-      {/* <Grid align='center'>
-        <Paper elevation={20} style={paperStyle}>
-          <p className='form-label'>Sign Up</p>
-          <form>
-            <TextField
-              style={formStyle}
-              variant='outlined'
-              required
-              fullWidth
-              id='firstName'
-              label='First Name'
-              name='firstName'
-            />
-            <TextField
-              style={formStyle}
-              variant='outlined'
-              required
-              fullWidth
-              id='lastName'
-              label='Last Name'
-              name='lastName'
-            />
-            <TextField
-              style={formStyle}
-              variant='outlined'
-              required
-              fullWidth
-              id='email'
-              label='Email Address'
-              name='email'
-            />
-            <TextField
-              style={formStyle}
-              variant='outlined'
-              required
-              fullWidth
-              name='password'
-              label='Password'
-              type='password'
-              id='password'
-            />
-            <TextField
-              style={formStyle}
-              variant='outlined'
-              required
-              fullWidth
-              name='cpassword'
-              label='Confirm Password'
-              type='password'
-              id='cpassword'
-            />
-          </form>
-          <div>
-            <Button
-              style={formBtnStyle}
-              type='submit'
-              fullWidth
-              variant='contained'
-              color='primary'>
-              Sign Up
-            </Button>
-          </div>
-        </Paper>
-      </Grid> */}
     </div>
   );
 };

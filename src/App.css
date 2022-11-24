@@ -37,6 +37,10 @@ body {
   background-color: #ffffff;
 }
 
+.user-bg {
+  background-color: #e5e5e5;
+}
+
 .ant-notification-notice {
   background-color: #84cf2fcf;
   border: 1px solid #57ff4b;

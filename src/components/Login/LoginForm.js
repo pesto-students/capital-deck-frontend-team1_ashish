@@ -1,6 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
-import { Button, Form, Input } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Button, Form, Input, notification } from 'antd';
+import { login, reset } from '../../features/auth/authSlice';
+import Spinner from '../Common/Spinner';
 import '../../common_css/Form.css';
 
 const LoginForm = () => {
@@ -8,10 +12,38 @@ const LoginForm = () => {
   const [form] = Form.useForm();
   const formItemLayout = null;
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (isError) {
+      notification.open({
+        message,
+        description: ''
+      });
+    }
+
+    if (isSuccess || user) {
+      navigate('/dashboard');
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
+  const handleSubmit = () => {
+    dispatch(login(formInput));
+  };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <div className='form-container'>
       <p className='login-form-label'>Login</p>
-      <Form {...formItemLayout} layout='vertical' form={form}>
+      <Form {...formItemLayout} layout='vertical' form={form} onFinish={handleSubmit}>
         <Form.Item
           label='Email Address'
           name='email'

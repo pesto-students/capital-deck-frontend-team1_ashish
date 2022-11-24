@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Button, Form, Input, notification } from 'antd';
+import axios from 'axios';
 import { baseURL } from '../../util/BaseUrl';
 import logo from '../../assets/capital-deck-logo-d.svg';
 import locationIcon from '../../assets/location-icon.svg';
@@ -19,6 +19,12 @@ const Feedback = () => {
       if (response.status === 200) {
         notification.open({
           message: 'Thank you for sharing this with us',
+          description: ''
+        });
+        form.resetFields();
+      } else {
+        notification.open({
+          message: response.message,
           description: ''
         });
         form.resetFields();

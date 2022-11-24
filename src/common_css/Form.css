@@ -58,6 +58,10 @@
   height: 40px;
 }
 
+.user-label {
+  text-align: center;
+}
+
 @media (max-width: 1180px) {
   .login-button {
     width: 30vw;

@@ -122,7 +122,7 @@
 @media (max-width: 960px) {
   .home-overviewscreen {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
   }
 

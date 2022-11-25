@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
-import { Button, Form, Input, notification } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import axios from 'axios';
 import { baseURL } from '../../util/BaseUrl';
 import logo from '../../assets/capital-deck-logo-d.svg';
@@ -17,16 +17,10 @@ const Feedback = () => {
   const handleSubmit = () => {
     axios.post(`${baseURL}/feedback`, formInput).then((response) => {
       if (response.status === 200) {
-        notification.open({
-          message: 'Thank you for sharing this with us',
-          description: ''
-        });
+        message.success('Thank you for sharing this with us');
         form.resetFields();
       } else {
-        notification.open({
-          message: response.message,
-          description: ''
-        });
+        message.error(response.message);
         form.resetFields();
       }
     });

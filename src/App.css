@@ -37,19 +37,8 @@ body {
   background-color: #ffffff;
 }
 
-.user-bg {
+.app-bg {
   background-color: #e5e5e5;
-}
-
-.ant-notification-notice {
-  background-color: #84cf2fcf;
-  border: 1px solid #57ff4b;
-}
-
-.ant-notification-notice-message {
-  color: black !important;
-  font-size: 18px !important;
-  font-weight: bold !important;
 }
 
 .loadingSpinnerContainer {
@@ -69,7 +58,7 @@ body {
   width: 64px;
   height: 64px;
   border: 8px solid;
-  border-color: #000 transparent #555 transparent;
+  border-color: rgb(9, 19, 127) transparent rgb(1, 109, 241) transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }

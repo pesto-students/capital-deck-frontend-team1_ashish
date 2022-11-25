@@ -7,9 +7,8 @@ import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ErrorPage from './pages/ErrorPage';
-import Dashboard from './pages/Dashboard';
+import Dashboard from './Dashboard';
 import './App.css';
-import UserProfilePage from './pages/UserProfilePage';
 
 const App = () => {
   const location = useLocation();
@@ -19,10 +18,19 @@ const App = () => {
     appClass = 'app login-bg';
   } else if (location.pathname === '/') {
     appClass = 'app home-bg';
-  } else if (location.pathname === '/dashboard') {
+  } else if (
+    location.pathname === '/dashboard' ||
+    location.pathname === '/dashboard/income' ||
+    location.pathname === '/dashboard/expense' ||
+    location.pathname === '/dashboard/summary' ||
+    location.pathname === '/dashboard/alert' ||
+    location.pathname === '/dashboard/category' ||
+    location.pathname === '/dashboard/userprofile'
+  ) {
+    appClass = 'app app-bg';
     innerPageInd = true;
-  } else if (location.pathname === '/userprofile') {
-    appClass = 'user-bg';
+  } else if (location.pathname.includes('/dashboard/') === true) {
+    innerPageInd = true;
   } else {
     appClass = 'app login-bg';
   }
@@ -32,10 +40,9 @@ const App = () => {
       {!innerPageInd ? <Navbar /> : <></>}
       <Routes>
         <Route path='/' element={<LandingPage />} />
-        <Route path='login' element={<Login />} />
-        <Route path='signup' element={<Signup />} />
-        <Route path='dashboard' element={<Dashboard />} />
-        <Route path='userprofile' element={<UserProfilePage />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/dashboard/*' element={<Dashboard />} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
       {!innerPageInd ? <Footer /> : <></>}

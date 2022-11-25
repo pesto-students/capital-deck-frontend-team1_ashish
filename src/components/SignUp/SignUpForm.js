@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, Input, notification } from 'antd';
+import { Button, Form, Input, message as MessageNot } from 'antd';
 import { register, reset } from '../../features/auth/authSlice';
 import Spinner from '../Common/Spinner';
 import '../../common_css/Form.css';
@@ -23,10 +23,7 @@ const SignUpForm = () => {
 
   useEffect(() => {
     if (isError) {
-      notification.open({
-        message,
-        description: ''
-      });
+      MessageNot.error(message);
     }
 
     if (isSuccess || user) {
@@ -38,10 +35,7 @@ const SignUpForm = () => {
 
   const handleSubmit = () => {
     if (formInput.password !== formInput.cpassword) {
-      notification.open({
-        message: 'Passwords do not match',
-        description: ''
-      });
+      MessageNot.error('Passwords do not match');
     } else {
       dispatch(register(formInput));
     }

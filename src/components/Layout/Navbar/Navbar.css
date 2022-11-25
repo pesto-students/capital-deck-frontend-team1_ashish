@@ -142,8 +142,8 @@
 }
 
 .mobileMenuOpen > a {
-  font-size: 28px;
-  padding: 25px;
+  font-size: 20px;
+  padding: 18px;
 }
 
 .mobileMenuOpen > a.active::after {
@@ -159,10 +159,10 @@
 }
 
 .mobileMenuOpen > button {
-  width: 200px;
+  width: 130px;
   height: 50px;
-  margin: 25px;
-  font-size: 24px;
+  margin: 10px 15px;
+  font-size: 16px;
 }
 
 .mobileMenuClose {
@@ -178,7 +178,7 @@
 
 .mobileMenuOpen .nav-mob-logo {
   display: block;
-  padding: 25px;
+  padding: 10px;
 }
 
 .mobileMenuOpen > * {
@@ -249,10 +249,6 @@
 
   .home-overviewscreen {
     margin: 130px 35px 35px 35px;
-  }
-
-  .mobileMenuOpen .nav-mob-logo {
-    padding: 15px;
   }
 
   .mobileMenuOpen > a {

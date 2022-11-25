@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, Input, notification } from 'antd';
+import { Button, Form, Input, message as MessageNot } from 'antd';
 import { login, reset } from '../../features/auth/authSlice';
 import Spinner from '../Common/Spinner';
 import '../../common_css/Form.css';
@@ -19,10 +19,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (isError) {
-      notification.open({
-        message,
-        description: ''
-      });
+      MessageNot.error(message);
     }
 
     if (isSuccess || user) {

@@ -4,6 +4,7 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import './Navbar.css';
 import logo from '../../../assets/capital-deck-logo.svg';
 
@@ -14,6 +15,7 @@ const Navbar = () => {
   const navHamburgerRef = useRef();
   const navContainerRef = useRef();
   const overlayRef = useRef();
+  const { width } = useWindowDimensions();
 
   let navMenuInd = 'H';
   if (location.pathname === '/login') {
@@ -91,6 +93,12 @@ const Navbar = () => {
     setMenuOpen(false);
   };
 
+  const HandleTabClick = () => {
+    if (width <= 960) {
+      Handleoverlay();
+    }
+  };
+
   return (
     <>
       <div className='navbar-container'>
@@ -101,7 +109,11 @@ const Navbar = () => {
         </span>
         <div className='nav-menu hamburgerClose' ref={navContainerRef}>
           <span className='nav-mob-logo'>
-            <Link to='/'>
+            <Link
+              to='/'
+              onClick={() => {
+                HandleTabClick();
+              }}>
               <img src={logo} alt='Logo' height={60} width={220} />
             </Link>
           </span>
@@ -110,6 +122,7 @@ const Navbar = () => {
               type='button'
               onClick={() => {
                 navigate('/signup');
+                HandleTabClick();
               }}>
               Sign Up
             </button>
@@ -118,20 +131,39 @@ const Navbar = () => {
               type='button'
               onClick={() => {
                 navigate('/login');
+                HandleTabClick();
               }}>
               Login
             </button>
           ) : navMenuInd === 'H' ? (
             <>
-              <a className='active' href='#Home'>
+              <a
+                className='active'
+                href='#Home'
+                onClick={() => {
+                  HandleTabClick();
+                }}>
                 Home
               </a>
-              <a href='#Team'>Our Team</a>
-              <a href='#Feedback'>Contact Us</a>
+              <a
+                href='#Team'
+                onClick={() => {
+                  HandleTabClick();
+                }}>
+                Our Team
+              </a>
+              <a
+                href='#Feedback'
+                onClick={() => {
+                  HandleTabClick();
+                }}>
+                Contact Us
+              </a>
               <button
                 type='button'
                 onClick={() => {
                   navigate('/login');
+                  HandleTabClick();
                 }}>
                 Login
               </button>
@@ -139,6 +171,7 @@ const Navbar = () => {
                 type='button'
                 onClick={() => {
                   navigate('/signup');
+                  HandleTabClick();
                 }}>
                 Sign Up
               </button>
@@ -149,6 +182,7 @@ const Navbar = () => {
                 type='button'
                 onClick={() => {
                   navigate('/login');
+                  HandleTabClick();
                 }}>
                 Login
               </button>
@@ -156,6 +190,7 @@ const Navbar = () => {
                 type='button'
                 onClick={() => {
                   navigate('/signup');
+                  HandleTabClick();
                 }}>
                 Sign Up
               </button>

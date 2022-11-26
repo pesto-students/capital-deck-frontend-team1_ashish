@@ -4,9 +4,6 @@ import { Button, Form, Input, message } from 'antd';
 import axios from 'axios';
 import { baseURL } from '../../util/BaseUrl';
 import logo from '../../assets/capital-deck-logo-d.svg';
-import locationIcon from '../../assets/location-icon.svg';
-import websiteIcon from '../../assets/web-logo.svg';
-import mailIcon from '../../assets/mail-icon.svg';
 import './Feedback.css';
 
 const Feedback = () => {
@@ -33,15 +30,21 @@ const Feedback = () => {
           <img src={logo} height='100' width='200' alt='Logo' />
         </div>
         <div>
-          <img src={locationIcon} height='50' width='50' alt='Location Icon' />
+          <span className='icon-contact-background'>
+            <i className='las la-map-marker-alt' />
+          </span>
           <p>9191 Mayfield Dr. Eau Claire, WI 54701</p>
         </div>
         <div>
-          <img src={websiteIcon} height='50' width='50' alt='Website Icon' />
+          <span className='icon-contact-background'>
+            <i className='las la-globe-americas' />
+          </span>
           <p>www.capitaldeck.netlify.com</p>
         </div>
         <div>
-          <img src={mailIcon} height='50' width='50' alt='Mail Icon' />
+          <span className='icon-contact-background'>
+            <i className='las la-envelope' />
+          </span>
           <p>info@capitaldeck.com</p>
         </div>
       </div>

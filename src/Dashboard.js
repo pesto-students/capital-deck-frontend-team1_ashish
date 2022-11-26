@@ -8,13 +8,16 @@ import Expense from './pages/Expense';
 import Summary from './pages/Summary';
 import Alert from './pages/Alert';
 import Category from './pages/Category';
-import AppBar from './components/DashboardLayout/AppBar/AppBar';
-import AppModuleHeader from './components/DashboardLayout/AppModuleHeader';
+import AppBar from './components/Layout/DashboardLayout/AppBar/AppBar';
+import MobAppBar from './components/Layout/DashboardLayout/MobAppBar/MobAppBar';
+import AppModuleHeader from './components/Layout/DashboardLayout/AppModuleHeader';
+import useWindowDimensions from './hooks/useWindowDimensions';
 import './Dashboard.css';
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { width } = useWindowDimensions();
 
   const { user } = useSelector((state) => state.auth);
 
@@ -26,7 +29,7 @@ const Dashboard = () => {
 
   return (
     <div className='dashboard-container'>
-      <AppBar />
+      {width <= 960 ? <MobAppBar /> : <AppBar />}
       <div className='app-main-container'>
         <AppModuleHeader />
         <Routes>

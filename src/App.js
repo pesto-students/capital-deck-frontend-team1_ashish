@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import Navbar from './components/Layout/Navbar/Navbar';
-import Footer from './components/Layout/Footer/Footer';
+import Navbar from './components/Layout/LandingLayout/Navbar/Navbar';
+import Footer from './components/Layout/LandingLayout/Footer/Footer';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Signup from './pages/Signup';

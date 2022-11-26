@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input, DatePicker, Radio, message, Upload } from 'antd';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 import './UserProfileForm.css';
 
 const getBase64 = (img, callback) => {
@@ -34,6 +35,7 @@ const UserProfileForm = () => {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState();
   const [form] = Form.useForm();
+  const { width } = useWindowDimensions();
 
   const onDateChange = (date, dateString) => {
     setUserProfile({
@@ -43,14 +45,24 @@ const UserProfileForm = () => {
     });
   };
 
-  const formItemLayout = {
-    labelCol: {
-      span: 6
-    },
-    wrapperCol: {
-      span: 16
-    }
-  };
+  const formItemLayout =
+    width > 480
+      ? {
+          labelCol: {
+            span: 6
+          },
+          wrapperCol: {
+            span: 16
+          }
+        }
+      : {
+          labelCol: {
+            span: 8
+          },
+          wrapperCol: {
+            span: 16
+          }
+        };
 
   const handleChange = (info) => {
     if (info.file.status === 'uploading') {

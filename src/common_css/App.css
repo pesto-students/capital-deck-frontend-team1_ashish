@@ -5,3 +5,10 @@
   justify-content: center;
   height: 92vh;
 }
+
+@media (max-width: 960px) {
+  .app-container {
+    height: auto;
+    min-height: 82vh;
+  }
+}

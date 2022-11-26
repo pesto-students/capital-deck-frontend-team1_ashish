@@ -114,7 +114,7 @@ const SignUpForm = () => {
           />
         </Form.Item>
         <Form.Item
-          label='Comfirm Password'
+          label='Confirm Password'
           name='cpassword'
           className='antd-log-form-item-mod'
           rules={[

@@ -15,7 +15,8 @@ const AppBar = () => {
 
   const { user } = useSelector((state) => state.auth);
 
-  const handleLogout = () => {
+  const handleLogout = (e) => {
+    e.preventDefault();
     dispatch(logout());
     dispatch(reset());
     navigate('/');
@@ -90,7 +91,7 @@ const AppBar = () => {
         </span>
       </span>
       <span className='appbar-logout'>
-        <Link to='#' onClick={handleLogout}>
+        <Link to='#' onClick={(e) => handleLogout(e)}>
           <i className='las la-sign-out-alt' />
           <span>Logout</span>
         </Link>

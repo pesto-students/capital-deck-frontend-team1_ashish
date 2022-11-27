@@ -14,6 +14,8 @@
 
 .antd-user-form-item-mod {
   height: 35px;
+  line-height: 45px;
+  width: -webkit-fill-available;
 }
 
 .antd-user-form-button-mod {
@@ -30,6 +32,11 @@
   background-color: #093e74;
   font-weight: bold;
   border-radius: 8px;
+}
+
+.save-user-button:hover {
+  color: #093e74 !important;
+  background-color: #ffffff !important;
 }
 
 .ant-upload-wrapper {

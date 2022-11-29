@@ -28,8 +28,7 @@
   color: #605c5c;
 }
 
- category-module
-.ant-float-btn-body {
+category-module .ant-float-btn-body {
   background-color: #093e74 !important;
 }
 
@@ -41,7 +40,6 @@
   border-top: 2px solid lightgray;
 }
 
- master
 .add-button {
   margin-right: 86px;
   width: auto;

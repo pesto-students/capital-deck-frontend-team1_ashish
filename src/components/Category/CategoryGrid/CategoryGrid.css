@@ -1,0 +1,21 @@
+.cat-grid-container {
+  display: flex;
+  flex-direction: column;
+  width: calc(78vw - 40px);
+  background-color: transparent;
+  padding: 20px;
+  border-radius: 8px;
+  height: 40vh;
+}
+
+@media (max-width: 1240px) {
+  .cat-grid-container {
+    width: calc(76vw - 40px);
+  }
+}
+
+@media (max-width: 960px) {
+  .cat-grid-container {
+    width: calc(90vw - 40px);
+  }
+}

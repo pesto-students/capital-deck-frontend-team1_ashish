@@ -139,92 +139,94 @@ const UserProfileForm = () => {
   );
 
   return (
-    <div className='userprofile-form'>
-      <Form
-        {...formItemLayout}
-        layout='horizontal'
-        autoComplete='off'
-        form={form}
-        onFinish={handlerUserSubmit}>
-        <Upload
-          name='avatar'
-          listType='picture-card'
-          className='avatar-uploader'
-          showUploadList={false}
-          action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
-          beforeUpload={beforeUpload}
-          onChange={handleChange}>
-          {imageUrl ? (
-            <img
-              src={imageUrl}
-              alt='avatar'
-              style={{
-                width: '100%'
-              }}
+    <div className='app-userprofile-form'>
+      <div className='userprofile-form'>
+        <Form
+          {...formItemLayout}
+          layout='horizontal'
+          autoComplete='off'
+          form={form}
+          onFinish={handlerUserSubmit}>
+          <Upload
+            name='avatar'
+            listType='picture-card'
+            className='avatar-uploader'
+            showUploadList={false}
+            action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
+            beforeUpload={beforeUpload}
+            onChange={handleChange}>
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt='avatar'
+                style={{
+                  width: '100%'
+                }}
+              />
+            ) : (
+              uploadButton
+            )}
+          </Upload>
+          <Form.Item
+            label='Name'
+            name='name'
+            className='antd-user-form-mod'
+            rules={[
+              {
+                required: true,
+                message: 'Please enter your name!'
+              }
+            ]}>
+            <Input className='antd-user-form-item-mod' />
+          </Form.Item>
+          <Form.Item
+            label='Email'
+            name='email'
+            className='antd-user-form-mod'
+            rules={[
+              {
+                required: true,
+                message: 'Please enter your email!',
+                type: 'email'
+              }
+            ]}>
+            <Input className='antd-user-form-item-mod' />
+          </Form.Item>
+          <Form.Item
+            label='Password'
+            name='password'
+            className='antd-user-form-mod'
+            rules={[
+              {
+                message: 'Please input your password!'
+              }
+            ]}>
+            <Input.Password
+              className='antd-user-form-item-mod'
+              placeholder='Enter new password'
+              autoComplete='new-password'
             />
-          ) : (
-            uploadButton
-          )}
-        </Upload>
-        <Form.Item
-          label='Name'
-          name='name'
-          className='antd-user-form-mod'
-          rules={[
-            {
-              required: true,
-              message: 'Please enter your name!'
-            }
-          ]}>
-          <Input className='antd-user-form-item-mod' />
-        </Form.Item>
-        <Form.Item
-          label='Email'
-          name='email'
-          className='antd-user-form-mod'
-          rules={[
-            {
-              required: true,
-              message: 'Please enter your email!',
-              type: 'email'
-            }
-          ]}>
-          <Input className='antd-user-form-item-mod' />
-        </Form.Item>
-        <Form.Item
-          label='Password'
-          name='password'
-          className='antd-user-form-mod'
-          rules={[
-            {
-              message: 'Please input your password!'
-            }
-          ]}>
-          <Input.Password
-            className='antd-user-form-item-mod'
-            placeholder='Enter new password'
-            autoComplete='new-password'
-          />
-        </Form.Item>
-        <Form.Item label='Date of Birth' name='dob' className='antd-user-form-mod'>
-          <DatePicker className='antd-user-form-item-mod' />
-        </Form.Item>
-        <Form.Item label='Contact' name='contactno' className='antd-user-form-mod'>
-          <Input className='antd-user-form-item-mod' />
-        </Form.Item>
-        <Form.Item label='Gender' name='gender' className='antd-user-form-mod'>
-          <Radio.Group className='antd-user-form-item-mod'>
-            <Radio value='MALE'>Male</Radio>
-            <Radio value='FEMALE'>Female</Radio>
-            <Radio value='OTHER'>Other</Radio>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item className='antd-user-form-button-mod'>
-          <Button htmlType='submit' className='save-user-button'>
-            Save
-          </Button>
-        </Form.Item>
-      </Form>
+          </Form.Item>
+          <Form.Item label='Date of Birth' name='dob' className='antd-user-form-mod'>
+            <DatePicker className='antd-user-form-item-mod' />
+          </Form.Item>
+          <Form.Item label='Contact' name='contactno' className='antd-user-form-mod'>
+            <Input className='antd-user-form-item-mod' />
+          </Form.Item>
+          <Form.Item label='Gender' name='gender' className='antd-user-form-mod'>
+            <Radio.Group className='antd-user-form-item-mod'>
+              <Radio value='MALE'>Male</Radio>
+              <Radio value='FEMALE'>Female</Radio>
+              <Radio value='OTHER'>Other</Radio>
+            </Radio.Group>
+          </Form.Item>
+          <Form.Item className='antd-user-form-button-mod'>
+            <Button htmlType='submit' className='save-user-button'>
+              Save
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   );
 };

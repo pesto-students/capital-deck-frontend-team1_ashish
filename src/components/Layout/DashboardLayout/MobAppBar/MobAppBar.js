@@ -21,7 +21,7 @@ const AppBar = () => {
   const [activeTab, setActiveTab] = useState(location.pathname);
   const { width } = useWindowDimensions();
 
-  const { user } = useSelector((state) => state.auth);
+  const { mydata } = useSelector((state) => state.users);
 
   useEffect(() => {
     const header = document.querySelector('.mob-appbar-container');
@@ -108,7 +108,7 @@ const AppBar = () => {
           <span className='userprofile_image'>
             <img src={profile} alt='User Profile' height={60} width={60} />
           </span>
-          <p>{user && user.name}</p>
+          <p>{mydata && mydata.name}</p>
         </span>
         <span className='mob-appbar-list'>
           <span className='mob-appbar-list-main'>

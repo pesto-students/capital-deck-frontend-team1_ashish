@@ -38,6 +38,7 @@ const AppModuleHeader = () => {
         {addButton}
       </Button>
       <Modal
+        className='rule-modal'
         title='Add Rule'
         centered
         footer={[

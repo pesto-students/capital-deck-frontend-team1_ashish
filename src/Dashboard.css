@@ -39,6 +39,11 @@
   border-top: 2px solid lightgray;
 }
 
+.add-button {
+  margin-right: 86px;
+  width: auto;
+}
+
 @media (max-width: 960px) {
   .dashboard-container {
     display: flex;

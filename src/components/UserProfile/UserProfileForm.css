@@ -1,3 +1,12 @@
+.app-userprofile-form {
+  display: flex;
+  width: 98%;
+  height: 98%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
 .userprofile-form {
   display: flex;
   flex-direction: column;
@@ -29,13 +38,13 @@
   color: #ffffff;
   height: 40px;
   margin: 10px 0px 10px;
-  background-color: #093e74;
+  background-color: #1a5a9b;
   font-weight: bold;
   border-radius: 8px;
 }
 
 .save-user-button:hover {
-  color: #093e74 !important;
+  color: #1a5a9b !important;
   background-color: #ffffff !important;
 }
 

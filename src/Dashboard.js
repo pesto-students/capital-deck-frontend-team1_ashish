@@ -15,17 +15,14 @@ import AppBar from './components/Layout/DashboardLayout/AppBar/AppBar';
 import MobAppBar from './components/Layout/DashboardLayout/MobAppBar/MobAppBar';
 import AppModuleHeader from './components/Layout/DashboardLayout/AppModuleHeader';
 import useWindowDimensions from './hooks/useWindowDimensions';
-
 import './Dashboard.css';
 
 const Dashboard = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
-
   const { user } = useSelector((state) => state.auth);
-
-  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     if (!user) {
@@ -48,7 +45,13 @@ const Dashboard = () => {
           <Route path='/category' element={<Category />} />
         </Routes>
         <FloatButton
-          icon={<CalculatorOutlined />}
+          icon={
+            <CalculatorOutlined
+              style={{
+                backgroundColor: '#ffffff'
+              }}
+            />
+          }
           onClick={() => {
             setModalOpen(true);
           }}
@@ -58,6 +61,7 @@ const Dashboard = () => {
           centered
           footer={[]}
           open={modalOpen}
+          width={300}
           onOk={() => setModalOpen(false)}
           onCancel={() => setModalOpen(false)}>
           <Calculator />

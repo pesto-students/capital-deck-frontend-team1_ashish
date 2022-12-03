@@ -28,6 +28,24 @@ export const createCategory = createAsyncThunk(
   }
 );
 
+// Update new category
+export const updateCategory = createAsyncThunk(
+  'categories/update',
+  async (categoryData, thunkAPI) => {
+    try {
+      const { token } = thunkAPI.getState().auth.user;
+      const { categoryid } = categoryData;
+      return await categoryService.updateCategory(categoryid, categoryData, token);
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Get user categories
 export const getCategories = createAsyncThunk('categories/getAll', async (_, thunkAPI) => {
   try {
@@ -73,6 +91,30 @@ export const categorySlice = createSlice({
         state.categories.push(action.payload);
       })
       .addCase(createCategory.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updateCategory.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateCategory.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.categories = state.categories.map((category) => {
+          if (category._id === action.payload._id) {
+            return {
+              ...category,
+              category_name: action.payload.category_name,
+              category_type: action.payload.category_type,
+              category_desc: action.payload.category_desc,
+              color: action.payload.color
+            };
+          }
+          return category;
+        });
+      })
+      .addCase(updateCategory.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

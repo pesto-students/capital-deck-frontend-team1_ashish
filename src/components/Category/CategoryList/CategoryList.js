@@ -8,7 +8,8 @@ import { deleteCategory } from '../../../features/categories/categorySlice';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import './CategoryList.css';
 
-const CategoryList = ({ data }) => {
+const CategoryList = (props) => {
+  const { data, formInput, setFormInput, setFormMode } = props;
   const { height } = useWindowDimensions();
   const dispatch = useDispatch();
   const { isError, message, isSuccess } = useSelector((state) => state.categories);
@@ -31,6 +32,23 @@ const CategoryList = ({ data }) => {
     if (isSuccess) {
       MessageNot.success('Category deleted successfully!!!');
     }
+  };
+
+  const editCategoryHandler = (id) => {
+    const filteredData = data.filter((item) => {
+      return item._id === id;
+    });
+
+    setFormMode('E');
+
+    setFormInput({
+      ...formInput,
+      categoryid: id,
+      categoryname: filteredData[0].category_name,
+      categorytype: filteredData[0].category_type,
+      categorydesc: filteredData[0].category_desc,
+      color: filteredData[0].color
+    });
   };
 
   const columns = [
@@ -78,7 +96,7 @@ const CategoryList = ({ data }) => {
       render: (record) => (
         <Space size='large'>
           <span className='table_button'>
-            <EditOutlined />
+            <EditOutlined onClick={() => editCategoryHandler(record._id)} />
           </span>
           <span className='table_button'>
             <DeleteOutlined onClick={() => deleteCategoryHandler(record._id)} />

@@ -13,7 +13,7 @@ const AppBar = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(location.pathname);
 
-  const { mydata } = useSelector((state) => state.users);
+  const { user } = useSelector((state) => state.auth);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ const AppBar = () => {
         <span className='userprofile_image'>
           <img src={profile} alt='User Profile' height={60} width={60} />
         </span>
-        <p>{mydata && mydata.name}</p>
+        <p>{user && user.name}</p>
       </span>
       <span className='appbar-list'>
         <span className='appbar-list-main'>

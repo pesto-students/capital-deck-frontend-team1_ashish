@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { message as MessageNot } from 'antd';
@@ -11,6 +11,14 @@ import useWindowDimensions from '../hooks/useWindowDimensions';
 import '../common_css/App.css';
 
 const Category = () => {
+  const [formInput, setFormInput] = useState({
+    categoryid: 0,
+    categoryname: '',
+    categorytype: 'INCOME',
+    categorydesc: '',
+    color: '#FA3E3E'
+  });
+  const [formMode, setFormMode] = useState('A');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { width } = useWindowDimensions();
@@ -40,10 +48,29 @@ const Category = () => {
   return (
     <div className='app-container'>
       <div className='cat-upper-container'>
-        <CategoryForm />
+        <CategoryForm
+          formInput={formInput}
+          setFormInput={setFormInput}
+          formMode={formMode}
+          setFormMode={setFormMode}
+        />
       </div>
       <div className='cat-lower-container'>
-        {width <= 680 ? <CategoryGrid data={categories} /> : <CategoryList data={categories} />}
+        {width <= 680 ? (
+          <CategoryGrid
+            data={categories}
+            formInput={formInput}
+            setFormInput={setFormInput}
+            setFormMode={setFormMode}
+          />
+        ) : (
+          <CategoryList
+            data={categories}
+            formInput={formInput}
+            setFormInput={setFormInput}
+            setFormMode={setFormMode}
+          />
+        )}
       </div>
     </div>
   );

@@ -120,6 +120,20 @@
   }
 }
 
+@media (max-width: 720px) {
+  .cat-form-left {
+    width: 80%;
+  }
+
+  .cat-form-right {
+    width: 20%;
+  }
+
+  .cat-form-right {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 680px) {
   .cat-upper-container {
     height: auto;
@@ -158,6 +172,10 @@
   .add-cat-button {
     margin: 5px;
     width: 70%;
+  }
+
+  .reset-cat-button {
+    margin-bottom: 0px;
   }
 
   .title-control-item {

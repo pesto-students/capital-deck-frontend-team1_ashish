@@ -1,16 +1,18 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Space, Table, message as MessageNot } from 'antd';
+import { Space, Table, Card, message as MessageNot } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteCategory } from '../../../features/categories/categorySlice';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import './CategoryList.css';
 
+const { Meta } = Card;
+
 const CategoryList = (props) => {
   const { data, formInput, setFormInput, setFormMode } = props;
-  const { height } = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
   const dispatch = useDispatch();
   const { isError, message, isSuccess } = useSelector((state) => state.categories);
 
@@ -107,18 +109,48 @@ const CategoryList = (props) => {
   ];
 
   return (
-    <div className='cat-list-container'>
-      <Table
-        columns={columns}
-        dataSource={data}
-        pagination={{
-          pageSize: 10
-        }}
-        scroll={{
-          y: yScroll
-        }}
-        size='small'
-      />
+    <div>
+      {width <= 680 ? (
+        <div className='cat-grid-container'>
+          {data &&
+            data.map((item) => {
+              return (
+                <Card
+                  className='cat-grid-card'
+                  actions={[
+                    <EditOutlined key='edit' onClick={() => editCategoryHandler(item._id)} />,
+                    <DeleteOutlined key='delete' onClick={() => deleteCategoryHandler(item._id)} />
+                  ]}>
+                  <Meta className='meda-card' title='Category:' description={item.category_name} />
+                  <Meta className='meda-card' title='Type:' description={item.category_type} />
+                  <Meta
+                    className='meda-card'
+                    title='Description:'
+                    description={item.category_desc}
+                  />
+                  <i
+                    className='table_color'
+                    style={{ backgroundColor: item.color, width: '60px' }}
+                  />
+                </Card>
+              );
+            })}
+        </div>
+      ) : (
+        <div className='cat-list-container'>
+          <Table
+            columns={columns}
+            dataSource={data}
+            pagination={{
+              pageSize: 10
+            }}
+            scroll={{
+              y: yScroll
+            }}
+            size='small'
+          />
+        </div>
+      )}
     </div>
   );
 };

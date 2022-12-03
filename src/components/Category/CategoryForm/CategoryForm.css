@@ -25,7 +25,7 @@
 
 .cat-form-right {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 30%;
   justify-content: flex-end;
   align-items: flex-end;
@@ -84,6 +84,14 @@
   background-color: #ffffff !important;
 }
 
+.reset-cat-button {
+  width: 50px;
+  background-color: #ffffff;
+  color: #1a5a9b;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
 @media (max-width: 1240px) {
   .cat-form-container {
     width: calc(76vw - 40px);
@@ -99,7 +107,7 @@
 
   .cat-form-right {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 25%;
     justify-content: flex-end;
     align-items: flex-end;
@@ -142,7 +150,7 @@
 
   .cat-form-right {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     align-items: center;
   }
@@ -153,7 +161,7 @@
   }
 
   .title-control-item {
-    width: 100%;
+    width: 96%;
   }
 
   .ant-form-item-label > label {

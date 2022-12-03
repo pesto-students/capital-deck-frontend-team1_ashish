@@ -2,7 +2,7 @@
   width: auto;
 }
 
-.ant-radio-group {
+.rule-modal .ant-radio-group {
   display: flex;
   flex-direction: column;
 }

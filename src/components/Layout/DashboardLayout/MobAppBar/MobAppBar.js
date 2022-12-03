@@ -10,7 +10,7 @@ import './MobAppBar.css';
 import logo from '../../../../assets/capital-deck-logo.svg';
 import profile from '../../../../assets/member1.svg';
 
-const AppBar = () => {
+const MobAppBar = () => {
   const [mobMenuOpen, setMobMenuOpen] = useState(false);
   const navMobHamburgerRef = useRef();
   const overlayMobRef = useRef();
@@ -21,7 +21,7 @@ const AppBar = () => {
   const [activeTab, setActiveTab] = useState(location.pathname);
   const { width } = useWindowDimensions();
 
-  const { mydata } = useSelector((state) => state.users);
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     const header = document.querySelector('.mob-appbar-container');
@@ -108,7 +108,7 @@ const AppBar = () => {
           <span className='userprofile_image'>
             <img src={profile} alt='User Profile' height={60} width={60} />
           </span>
-          <p>{mydata && mydata.name}</p>
+          <p>{user && user.name}</p>
         </span>
         <span className='mob-appbar-list'>
           <span className='mob-appbar-list-main'>
@@ -198,4 +198,4 @@ const AppBar = () => {
   );
 };
 
-export default AppBar;
+export default MobAppBar;

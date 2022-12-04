@@ -137,6 +137,7 @@ const CategoryForm = (props) => {
           <div className='cat-form-right'>
             <Button
               htmlType='submit'
+              title='Reset'
               className='reset-cat-button'
               onClick={(e) => {
                 resetHandler(e);

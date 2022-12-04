@@ -48,7 +48,7 @@
   background-color: #ffffff !important;
 }
 
-.ant-upload-wrapper {
+.app-userprofile-form .ant-upload-wrapper {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;

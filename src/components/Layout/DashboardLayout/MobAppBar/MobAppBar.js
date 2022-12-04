@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { logout, reset } from '../../../../features/auth/authSlice';
 import useWindowDimensions from '../../../../hooks/useWindowDimensions';
+import { baseUploadURL } from '../../../../util/BaseUrl';
 import './MobAppBar.css';
 import logo from '../../../../assets/capital-deck-logo.svg';
 import profile from '../../../../assets/member1.svg';
@@ -74,7 +75,8 @@ const MobAppBar = () => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = (e) => {
+    e.preventDefault();
     mobHandleTabClick();
     dispatch(logout());
     dispatch(reset());
@@ -106,7 +108,16 @@ const MobAppBar = () => {
         </span>
         <span className='mob-appbar-user'>
           <span className='userprofile_image'>
-            <img src={profile} alt='User Profile' height={60} width={60} />
+            {user && user.file_path ? (
+              <img
+                src={`${baseUploadURL}${user.file_path}`}
+                alt='User Profile'
+                height={60}
+                width={60}
+              />
+            ) : (
+              <img src={profile} alt='User Profile' height={60} width={60} />
+            )}
           </span>
           <p>{user && user.name}</p>
         </span>
@@ -187,7 +198,7 @@ const MobAppBar = () => {
           </span>
         </span>
         <span className='mob-appbar-logout'>
-          <Link to='#' onClick={handleLogout}>
+          <Link to='#' onClick={(e) => handleLogout(e)}>
             <i className='las la-sign-out-alt' />
             <span>Logout</span>
           </Link>

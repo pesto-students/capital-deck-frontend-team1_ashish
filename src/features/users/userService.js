@@ -8,7 +8,6 @@ const getUser = async (token) => {
       Authorization: `Bearer ${token}`
     }
   };
-
   const response = await axios.get(`${baseURL}/users/me`, config);
 
   return response.data;
@@ -27,6 +26,7 @@ const updateUser = async (token, id, data) => {
     const userStorage = JSON.parse(localStorage.getItem('user'));
     userStorage.name = response.data.name;
     userStorage.email = response.data.email;
+    userStorage.file_path = response.data.file_path;
     localStorage.setItem('user', JSON.stringify(userStorage));
   }
 

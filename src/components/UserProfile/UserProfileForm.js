@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
@@ -8,8 +8,8 @@ import { Button, Form, Input, DatePicker, Radio, Upload, message as MessageNot }
 import dayjs from 'dayjs';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import { getUser, updateUser, reset } from '../../features/users/userSlice';
-// import { getUpdatedUser } from '../../features/auth/authSlice';
 import Spinner from '../Common/Spinner';
+import { baseUploadURL } from '../../util/BaseUrl';
 import './UserProfileForm.css';
 
 const getBase64 = (img, callback) => {
@@ -17,6 +17,7 @@ const getBase64 = (img, callback) => {
   reader.addEventListener('load', () => callback(reader.result));
   reader.readAsDataURL(img);
 };
+
 const beforeUpload = (file) => {
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
   if (!isJpgOrPng) {
@@ -30,8 +31,10 @@ const beforeUpload = (file) => {
 };
 
 const UserProfileForm = () => {
-  const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState();
+  const [loadingImg, setLoadingImg] = useState(false);
+  const [imageUrl, setImageUrl] = useState('');
+  const [imageFile, setImageFile] = useState('');
+  const imgRef = useRef();
   const [form] = Form.useForm();
   const { width } = useWindowDimensions();
   const navigate = useNavigate();
@@ -49,6 +52,8 @@ const UserProfileForm = () => {
       gender: mydata.gender,
       contactno: mydata.contact_no
     });
+    setImageUrl(`${baseUploadURL}${mydata.file_path}`);
+    setImageFile('');
   }, [mydata]);
 
   useEffect(() => {
@@ -75,7 +80,8 @@ const UserProfileForm = () => {
       password: values.password,
       dob: dayjs(values.dob).format('YYYY-MM-DD'),
       contactno: values.contactno,
-      gender: values.gender
+      gender: values.gender,
+      file: imageFile
     };
     dispatch(updateUser(data));
 
@@ -84,7 +90,6 @@ const UserProfileForm = () => {
     }
 
     if (isSuccess) {
-      // dispatch(getUpdatedUser());
       MessageNot.success('Updated!!!');
     }
   };
@@ -112,23 +117,17 @@ const UserProfileForm = () => {
           }
         };
 
-  const handleChange = (info) => {
-    if (info.file.status === 'uploading') {
-      setLoading(true);
-      return;
-    }
-    if (info.file.status === 'done') {
-      // Get this url from response in real world.
-      getBase64(info.file.originFileObj, (url) => {
-        setLoading(false);
-        setImageUrl(url);
-      });
-    }
+  const handlePhotoChange = (info) => {
+    getBase64(info.file.originFileObj, (url) => {
+      setLoadingImg(false);
+      setImageUrl(url);
+      setImageFile(info.file.originFileObj);
+    });
   };
 
   const uploadButton = (
     <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
+      {loadingImg ? <LoadingOutlined /> : <PlusOutlined />}
       <div
         style={{
           marginTop: 8
@@ -152,9 +151,9 @@ const UserProfileForm = () => {
             listType='picture-card'
             className='avatar-uploader'
             showUploadList={false}
-            action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
+            ref={imgRef}
             beforeUpload={beforeUpload}
-            onChange={handleChange}>
+            onChange={handlePhotoChange}>
             {imageUrl ? (
               <img
                 src={imageUrl}

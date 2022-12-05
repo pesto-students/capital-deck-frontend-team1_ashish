@@ -84,7 +84,34 @@
 }
 
 .app-modal .ant-upload-list {
-  max-width: 300px;
+  max-width: 250px;
+}
+
+.app-modal .ant-upload-list-item-name {
+  color: #255cc5 !important;
+}
+.app-modal .anticon-paper-clip {
+  color: #255cc5 !important;
+}
+
+.app-modal .anticon-delete {
+  color: #255cc5 !important;
+}
+
+.app-modal .modal-button .ant-form-item-control-input-content {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app-modal .modal-button .ant-form-item-control-input-content .modal-save {
+  background-color: #1a5a9b;
+  color: #ffffff;
+}
+
+.app-modal .modal-button .ant-form-item-control-input-content .modal-save:hover {
+  background-color: #ffffff;
+  border: 1px solid #1a5a9b;
+  color: #1a5a9b;
 }
 
 @media (max-width: 960px) {

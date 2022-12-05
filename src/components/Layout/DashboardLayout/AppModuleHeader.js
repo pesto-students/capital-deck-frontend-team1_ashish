@@ -57,20 +57,13 @@ const AppModuleHeader = () => {
         className='app-modal'
         title={addButtonTitle}
         centered
-        footer={[
-          <Button key='back' onClick={() => setModalOpen(false)}>
-            Cancel
-          </Button>,
-          <Button style={{ background: '#1a5a9b' }} key='submit' type='primary'>
-            Save
-          </Button>
-        ]}
+        footer={[]}
         open={modalOpen}
         onCancel={() => setModalOpen(false)}>
         {modalCode === 'INCOME' ? (
           <AddAlert />
         ) : modalCode === 'EXPENSE' ? (
-          <AddExpense mode='A' />
+          <AddExpense mode='A' setModalOpen={setModalOpen} />
         ) : modalCode === 'ALERT' ? (
           <AddAlert />
         ) : (

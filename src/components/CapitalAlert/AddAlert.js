@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Form, Input, Radio, Select } from 'antd';
-import './AddAlert.css';
 
 const AddAlert = () => {
   const [componentDisabled, setComponentDisabled] = useState(true);

@@ -28,7 +28,7 @@
   color: #605c5c;
 }
 
-category-module .ant-float-btn-body {
+.category-module .ant-float-btn-body {
   background-color: #093e74 !important;
 }
 
@@ -36,13 +36,82 @@ category-module .ant-float-btn-body {
   box-shadow: 0px 17px 10px -10px rgb(0 0 0 / 40%);
 }
 
+.app-title .add-button {
+  margin-right: 30px;
+  width: auto;
+  background-color: #1a5a9b;
+  color: #ffffff;
+  font-weight: bold;
+  height: 34px;
+}
+
+.app-title .add-button:hover {
+  margin-right: 30px;
+  width: auto;
+  background-color: #ffffff;
+  color: #1a5a9b;
+  border: 1px solid #1a5a9b;
+  font-weight: bold;
+  height: 34px;
+}
+
 .ant-modal-body {
   border-top: 2px solid lightgray;
 }
 
-.add-button {
-  margin-right: 86px;
+.app-modal .ant-btn {
   width: auto;
+}
+
+.app-modal .ant-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.notify-form {
+  margin-top: 20px;
+}
+
+.ant-form-item {
+  margin: 10px;
+}
+
+.app-modal .ant-upload-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-modal .ant-upload-list {
+  max-width: 250px;
+}
+
+.app-modal .ant-upload-list-item-name {
+  color: #255cc5 !important;
+}
+.app-modal .anticon-paper-clip {
+  color: #255cc5 !important;
+}
+
+.app-modal .anticon-delete {
+  color: #255cc5 !important;
+}
+
+.app-modal .modal-button .ant-form-item-control-input-content {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app-modal .modal-button .ant-form-item-control-input-content .modal-save {
+  background-color: #1a5a9b;
+  color: #ffffff;
+}
+
+.app-modal .modal-button .ant-form-item-control-input-content .modal-save:hover {
+  background-color: #ffffff;
+  border: 1px solid #1a5a9b;
+  color: #1a5a9b;
 }
 
 @media (max-width: 960px) {

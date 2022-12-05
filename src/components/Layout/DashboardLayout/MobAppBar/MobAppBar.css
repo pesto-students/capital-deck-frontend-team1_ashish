@@ -39,6 +39,10 @@
   justify-content: center;
 }
 
+.mob-appbar-user .userprofile_image > img {
+  border-radius: 30px;
+}
+
 .mob-appbar-user p {
   margin: 10px;
   font-weight: bold;

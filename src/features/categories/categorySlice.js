@@ -5,6 +5,8 @@ import categoryService from './categoryService';
 
 const initialState = {
   categories: [],
+  categoriesByIncome: [],
+  categoriesByExpense: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -73,6 +75,74 @@ export const deleteCategory = createAsyncThunk('categories/delete', async (id, t
     return thunkAPI.rejectWithValue(message);
   }
 });
+
+// Get user categories
+export const getCategoriesByIncome = createAsyncThunk(
+  'categories/getAllByIncome',
+  async (_, thunkAPI) => {
+    try {
+      const { token } = thunkAPI.getState().auth.user;
+      return await categoryService.getCategoriesByIncome(token, 'INCOME');
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Get user categories
+export const getCategoriesByExpense = createAsyncThunk(
+  'categories/getAllByExpense',
+  async (_, thunkAPI) => {
+    try {
+      const { token } = thunkAPI.getState().auth.user;
+      return await categoryService.getCategoriesByExpense(token, 'EXPENSE');
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Create new category for income
+export const createCategoryForIncome = createAsyncThunk(
+  'categories/createForIncome',
+  async (categoryData, thunkAPI) => {
+    try {
+      const { token } = thunkAPI.getState().auth.user;
+      return await categoryService.createCategory(categoryData, token);
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Create new category for expense
+export const createCategoryForExpense = createAsyncThunk(
+  'categories/createForExpense',
+  async (categoryData, thunkAPI) => {
+    try {
+      const { token } = thunkAPI.getState().auth.user;
+      return await categoryService.createCategory(categoryData, token);
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const categorySlice = createSlice({
   name: 'category',
@@ -143,6 +213,58 @@ export const categorySlice = createSlice({
         );
       })
       .addCase(deleteCategory.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getCategoriesByIncome.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCategoriesByIncome.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.categoriesByIncome = action.payload;
+      })
+      .addCase(getCategoriesByIncome.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getCategoriesByExpense.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCategoriesByExpense.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.categoriesByExpense = action.payload;
+      })
+      .addCase(getCategoriesByExpense.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(createCategoryForIncome.pending, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(createCategoryForIncome.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.categoriesByIncome.push(action.payload);
+      })
+      .addCase(createCategoryForIncome.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(createCategoryForExpense.pending, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(createCategoryForExpense.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.categoriesByExpense.push(action.payload);
+      })
+      .addCase(createCategoryForExpense.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

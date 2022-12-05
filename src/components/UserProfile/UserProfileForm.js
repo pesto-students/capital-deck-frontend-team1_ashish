@@ -10,6 +10,7 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 import { getUser, updateUser, reset } from '../../features/users/userSlice';
 import Spinner from '../Common/Spinner';
 import { baseUploadURL } from '../../util/BaseUrl';
+import profile from '../../assets/member1.svg';
 import './UserProfileForm.css';
 
 const getBase64 = (img, callback) => {
@@ -44,16 +45,29 @@ const UserProfileForm = () => {
   const { mydata, isLoading, isError, message, isSuccess } = useSelector((state) => state.users);
 
   useEffect(() => {
+    let date = '';
+    let genderoption = 'MALE';
+    if (mydata.dob) {
+      date = dayjs(mydata.dob);
+    }
+    if (mydata.gender) {
+      genderoption = mydata.gender;
+    }
+    if (mydata.file_path) {
+      setImageUrl(`${baseUploadURL}${mydata.file_path}`);
+    } else {
+      setImageUrl(profile);
+    }
+    setImageFile('');
+
     form.setFieldsValue({
       name: mydata.name,
       email: mydata.email,
       password: '',
-      dob: dayjs(mydata.dob),
-      gender: mydata.gender,
+      dob: date,
+      gender: genderoption,
       contactno: mydata.contact_no
     });
-    setImageUrl(`${baseUploadURL}${mydata.file_path}`);
-    setImageFile('');
   }, [mydata]);
 
   useEffect(() => {

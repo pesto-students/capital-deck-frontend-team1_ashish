@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import AddAlert from '../../CapitalAlert/AddAlert';
 import AddExpense from '../../Expense/AddExpense';
+import AddIncome from '../../Income/AddIncome';
 
 const AppModuleHeader = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -61,7 +62,7 @@ const AppModuleHeader = () => {
         open={modalOpen}
         onCancel={() => setModalOpen(false)}>
         {modalCode === 'INCOME' ? (
-          <AddAlert />
+          <AddIncome mode='A' setModalOpen={setModalOpen} />
         ) : modalCode === 'EXPENSE' ? (
           <AddExpense mode='A' setModalOpen={setModalOpen} />
         ) : modalCode === 'ALERT' ? (

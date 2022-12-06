@@ -5,6 +5,7 @@ import expenseService from './expenseService';
 
 const initialState = {
   expenses: [],
+  expensesummary: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -36,10 +37,18 @@ export const createExpense = createAsyncThunk('expenses/create', async (expenseD
 
 // Update new expense
 export const updateExpense = createAsyncThunk('expenses/update', async (expenseData, thunkAPI) => {
+  const { expenseid, date, name, amount, categoryid, file } = expenseData;
+
+  const formdata = new FormData();
+  formdata.append('expensedate', date);
+  formdata.append('expensetitle', name);
+  formdata.append('expenseamount', amount);
+  formdata.append('categoryid', categoryid);
+  formdata.append('file', file);
+
   try {
     const { token } = thunkAPI.getState().auth.user;
-    const { expenseid } = expenseData;
-    return await expenseService.updateExpense(expenseid, expenseData, token);
+    return await expenseService.updateExpense(expenseid, formdata, token);
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||
@@ -77,6 +86,23 @@ export const deleteExpense = createAsyncThunk('expenses/delete', async (id, thun
   }
 });
 
+// Get user expenses summary
+export const getExpensesSummary = createAsyncThunk(
+  'expenses/getAllSummary',
+  async (_, thunkAPI) => {
+    try {
+      const { token } = thunkAPI.getState().auth.user;
+      return await expenseService.getExpensesSummary(token);
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const expenseSlice = createSlice({
   name: 'expense',
   initialState,
@@ -107,11 +133,13 @@ export const expenseSlice = createSlice({
         state.expenses = state.expenses.map((expense) => {
           if (expense._id === action.payload._id) {
             return {
-              ...expense
-              // category_name: action.payload.category_name,
-              // category_type: action.payload.category_type,
-              // category_desc: action.payload.category_desc,
-              // color: action.payload.color
+              ...expense,
+              expense_date: action.payload.expense_date,
+              expense_title: action.payload.expense_title,
+              expense_amount: action.payload.expense_amount,
+              category_id: action.payload.category_id,
+              file_path: action.payload.file_path,
+              file_name: action.payload.file_name
             };
           }
           return expense;
@@ -144,6 +172,19 @@ export const expenseSlice = createSlice({
         state.expenses = state.expenses.filter((expense) => expense._id !== action.payload.id);
       })
       .addCase(deleteExpense.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getExpensesSummary.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getExpensesSummary.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.expensesummary = action.payload;
+      })
+      .addCase(getExpensesSummary.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

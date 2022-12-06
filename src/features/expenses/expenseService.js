@@ -51,11 +51,25 @@ const deleteExpense = async (expenseId, token) => {
   return response.data;
 };
 
+// Get user expenses summary
+const getExpensesSummary = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
+
+  const response = await axios.get(`${baseURL}/expense/summary`, config);
+
+  return response.data;
+};
+
 const expenseService = {
   createExpense,
   updateExpense,
   getExpenses,
-  deleteExpense
+  deleteExpense,
+  getExpensesSummary
 };
 
 export default expenseService;

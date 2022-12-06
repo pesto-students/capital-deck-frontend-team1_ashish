@@ -23,7 +23,7 @@ import {
   reset,
   createCategoryForExpense
 } from '../../features/categories/categorySlice';
-import { createExpense } from '../../features/expenses/expenseSlice';
+import { createExpense, updateExpense } from '../../features/expenses/expenseSlice';
 import Spinner from '../Common/Spinner';
 
 const fileprops = {
@@ -35,7 +35,7 @@ const fileprops = {
 };
 
 const AddExpense = (props) => {
-  const { setModalOpen } = props;
+  const { mode, setModalOpen, modalId, data } = props;
   const [form] = Form.useForm();
   const [newItem, setNewItem] = useState('');
   const inputRef = useRef(null);
@@ -44,6 +44,22 @@ const AddExpense = (props) => {
   const { user } = useSelector((state) => state.auth);
   const { categoriesByExpense, isError, message } = useSelector((state) => state.categories);
   const { isLoading } = useSelector((state) => state.expenses);
+
+  useEffect(() => {
+    if (mode === 'E') {
+      const filteredData = data.filter((item) => {
+        return item._id === modalId;
+      });
+
+      form.setFieldsValue({
+        date: dayjs(filteredData[0].expense_date),
+        name: filteredData[0].expense_title,
+        amount: filteredData[0].expense_amount,
+        category: filteredData[0].category_id?._id,
+        upload: ''
+      });
+    }
+  }, [modalId]);
 
   useEffect(() => {
     if (isError) {
@@ -95,7 +111,7 @@ const AddExpense = (props) => {
     if (values.upload) {
       attachement = values.upload.file.originFileObj;
     }
-    const data = {
+    const newdata = {
       date: dayjs(values.date).format('YYYY-MM-DD HH:MM'),
       name: values.name,
       amount: values.amount,
@@ -103,8 +119,14 @@ const AddExpense = (props) => {
       file: attachement
     };
 
-    dispatch(createExpense(data));
-    MessageNot.success('Expense added successfully!!!');
+    if (mode === 'E') {
+      newdata.expenseid = modalId;
+      dispatch(updateExpense(newdata));
+      MessageNot.success('Expense updated successfully!!!');
+    } else {
+      dispatch(createExpense(newdata));
+      MessageNot.success('Expense added successfully!!!');
+    }
     form.resetFields();
     setModalOpen(false);
   };

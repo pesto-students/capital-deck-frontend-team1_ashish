@@ -26,12 +26,13 @@ const updateExpense = async (expenseId, expenseData, token) => {
 };
 
 // Get user expenses
-const getExpenses = async (token) => {
+const getExpenses = async (token, searchExpenseData) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`
     }
   };
+  console.log(searchExpenseData);
 
   const response = await axios.get(`${baseURL}/expense`, config);
 

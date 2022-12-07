@@ -59,18 +59,21 @@ export const updateExpense = createAsyncThunk('expenses/update', async (expenseD
 });
 
 // Get user expenses
-export const getExpenses = createAsyncThunk('expenses/getAll', async (_, thunkAPI) => {
-  try {
-    const { token } = thunkAPI.getState().auth.user;
-    return await expenseService.getExpenses(token);
-  } catch (error) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-    return thunkAPI.rejectWithValue(message);
+export const getExpenses = createAsyncThunk(
+  'expenses/getAll',
+  async (searchExpenseData, thunkAPI) => {
+    try {
+      const { token } = thunkAPI.getState().auth.user;
+      return await expenseService.getExpenses(token, searchExpenseData);
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
 // Delete user expense
 export const deleteExpense = createAsyncThunk('expenses/delete', async (id, thunkAPI) => {

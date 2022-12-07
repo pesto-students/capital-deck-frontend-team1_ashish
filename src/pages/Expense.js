@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { message as MessageNot } from 'antd';
@@ -6,9 +6,15 @@ import { getExpenses, getExpensesSummary, reset } from '../features/expenses/exp
 import Spinner from '../components/Common/Spinner';
 import ExpenseSummary from '../components/Expense/ExpenseSummary/ExpenseSummary';
 import ExpenseList from '../components/Expense/ExpenseList/ExpenseList';
+import ExpenseSearch from '../components/Expense/ExpenseSearch/ExpenseSearch';
 import '../common_css/App.css';
 
 const Expense = () => {
+  const [searchExpenseData, setSearchExpenseData] = useState({
+    categoryid: 0,
+    fromdate: '',
+    todate: ''
+  });
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -25,13 +31,13 @@ const Expense = () => {
       navigate('/login');
     }
 
-    dispatch(getExpenses());
+    dispatch(getExpenses(searchExpenseData));
     dispatch(getExpensesSummary());
 
     return () => {
       dispatch(reset());
     };
-  }, [user, navigate, isError, message, dispatch]);
+  }, [user, navigate, isError, message, dispatch, searchExpenseData]);
 
   if (isLoading) {
     return <Spinner />;
@@ -39,7 +45,12 @@ const Expense = () => {
 
   return (
     <div className='app-container'>
-      <div className='module-upper-container'>1</div>
+      <div className='module-upper-container'>
+        <ExpenseSearch
+          searchExpenseData={searchExpenseData}
+          setSearchExpenseData={setSearchExpenseData}
+        />
+      </div>
       <div className='module-middle-container'>
         <ExpenseSummary data={expensesummary} />
       </div>

@@ -5,3 +5,6 @@
 
 export const baseURL = 'https://capitaldeck.onrender.com/api';
 export const baseUploadURL = 'https://capitaldeck.onrender.com/';
+
+// export const baseURL = 'http://localhost:8000/api';
+// export const baseUploadURL = 'http://localhost:8000/';

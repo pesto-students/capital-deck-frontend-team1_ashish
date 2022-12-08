@@ -23,7 +23,7 @@ import {
   reset,
   createCategoryForIncome
 } from '../../features/categories/categorySlice';
-import { createIncome } from '../../features/incomes/incomeSlice';
+import { createIncome, updateIncome } from '../../features/incomes/incomeSlice';
 import Spinner from '../Common/Spinner';
 
 const fileprops = {
@@ -35,7 +35,7 @@ const fileprops = {
 };
 
 const AddIncome = (props) => {
-  const { setModalOpen } = props;
+  const { mode, setModalOpen, modalId, data } = props;
   const [form] = Form.useForm();
   const [newItem, setNewItem] = useState('');
   const inputRef = useRef(null);
@@ -44,6 +44,22 @@ const AddIncome = (props) => {
   const { user } = useSelector((state) => state.auth);
   const { categoriesByIncome, isError, message } = useSelector((state) => state.categories);
   const { isLoading } = useSelector((state) => state.incomes);
+
+  useEffect(() => {
+    if (mode === 'E') {
+      const filteredData = data.filter((item) => {
+        return item._id === modalId;
+      });
+
+      form.setFieldsValue({
+        date: dayjs(filteredData[0].income_date),
+        name: filteredData[0].income_title,
+        amount: filteredData[0].income_amount,
+        category: filteredData[0].category_id?._id,
+        upload: ''
+      });
+    }
+  }, [modalId]);
 
   useEffect(() => {
     if (isError) {
@@ -95,7 +111,7 @@ const AddIncome = (props) => {
     if (values.upload) {
       attachement = values.upload.file.originFileObj;
     }
-    const data = {
+    const newdata = {
       date: dayjs(values.date).format('YYYY-MM-DD HH:MM'),
       name: values.name,
       amount: values.amount,
@@ -103,8 +119,14 @@ const AddIncome = (props) => {
       file: attachement
     };
 
-    dispatch(createIncome(data));
-    MessageNot.success('Income added successfully!!!');
+    if (mode === 'E') {
+      newdata.incomeid = modalId;
+      dispatch(updateIncome(newdata));
+      MessageNot.success('Income updated successfully!!!');
+    } else {
+      dispatch(createIncome(newdata));
+      MessageNot.success('Income added successfully!!!');
+    }
     form.resetFields();
     setModalOpen(false);
   };

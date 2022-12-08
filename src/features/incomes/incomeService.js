@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import { baseURL } from '../../util/BaseUrl';
 
@@ -22,20 +23,20 @@ const updateIncome = async (incomeId, incomeData, token) => {
   };
 
   const response = await axios.put(`${baseURL}/income/${incomeId}`, incomeData, config);
-  return response;
+  return response.data;
 };
 
 // Get user Incomes
-
-const getIncomes = async (token) => {
+const getIncomes = async (token, searchIncomeData) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`
     }
   };
+  console.log(searchIncomeData);
 
   const response = await axios.get(`${baseURL}/income`, config);
-  return response;
+  return response.data;
 };
 
 // Delete user Income
@@ -47,14 +48,28 @@ const deleteIncome = async (incomeId, token) => {
   };
 
   const response = await axios.delete(`${baseURL}/income/${incomeId}`, config);
-  return response;
+  return response.data;
+};
+
+// Get user expenses summary
+const getIncomesSummary = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
+
+  const response = await axios.get(`${baseURL}/income/summary`, config);
+
+  return response.data;
 };
 
 const incomeService = {
   createIncome,
   updateIncome,
   getIncomes,
-  deleteIncome
+  deleteIncome,
+  getIncomesSummary
 };
 
 export default incomeService;

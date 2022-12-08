@@ -1,0 +1,27 @@
+.module-search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(78vw - 30px);
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.search-btn {
+  background-color: #1a5a9b;
+  margin-left: 10px;
+}
+
+@media (max-width: 1240px) {
+  .module-search-container {
+    width: calc(76vw - 40px);
+  }
+}
+
+@media (max-width: 960px) {
+  .module-search-container {
+    width: calc(90vw - 40px);
+  }
+}

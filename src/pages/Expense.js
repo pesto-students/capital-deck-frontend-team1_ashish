@@ -1,9 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { message as MessageNot } from 'antd';
-import { getExpenses, getExpensesSummary, reset } from '../features/expenses/expenseSlice';
-import Spinner from '../components/Common/Spinner';
+import React, { useState } from 'react';
 import ExpenseSummary from '../components/Expense/ExpenseSummary/ExpenseSummary';
 import ExpenseList from '../components/Expense/ExpenseList/ExpenseList';
 import ExpenseSearch from '../components/Expense/ExpenseSearch/ExpenseSearch';
@@ -15,33 +10,6 @@ const Expense = () => {
     fromdate: '',
     todate: ''
   });
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
-  const { expensesummary, expenses, isLoading, isError, message } = useSelector(
-    (state) => state.expenses
-  );
-
-  useEffect(() => {
-    if (isError) {
-      MessageNot.error(message);
-    }
-
-    if (!user) {
-      navigate('/login');
-    }
-
-    dispatch(getExpenses(searchExpenseData));
-    dispatch(getExpensesSummary());
-
-    return () => {
-      dispatch(reset());
-    };
-  }, [user, navigate, isError, message, dispatch, searchExpenseData]);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   return (
     <div className='app-container'>
@@ -52,10 +20,10 @@ const Expense = () => {
         />
       </div>
       <div className='module-middle-container'>
-        <ExpenseSummary data={expensesummary} />
+        <ExpenseSummary searchExpenseData={searchExpenseData} />
       </div>
       <div className='module-lower-container'>
-        <ExpenseList data={expenses} />
+        <ExpenseList searchExpenseData={searchExpenseData} />
       </div>
     </div>
   );

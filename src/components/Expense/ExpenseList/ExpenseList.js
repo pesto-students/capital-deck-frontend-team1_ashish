@@ -1,10 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Space, Table, Card, message as MessageNot, Modal } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteExpense } from '../../../features/expenses/expenseSlice';
+import Spinner from '../../Common/Spinner';
+import { deleteExpense, getExpenses, reset } from '../../../features/expenses/expenseSlice';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import AddExpense from '../AddExpense';
 import './ExpenseList.css';
@@ -12,12 +14,16 @@ import './ExpenseList.css';
 const { Meta } = Card;
 
 const ExpenseList = (props) => {
-  const { data } = props;
+  const { searchExpenseData } = props;
   const [modalOpen, setModalOpen] = useState(false);
   const [modalId, setModalId] = useState(0);
   const { height, width } = useWindowDimensions();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isError, message, isSuccess } = useSelector((state) => state.expenses);
+  const { expenses, isError, message, isSuccess, isLoading } = useSelector(
+    (state) => state.expenses
+  );
+  const { user } = useSelector((state) => state.auth);
 
   let yScroll = 300;
 
@@ -101,12 +107,32 @@ const ExpenseList = (props) => {
     }
   ];
 
+  useEffect(() => {
+    if (isError) {
+      MessageNot.error(message);
+    }
+
+    if (!user) {
+      navigate('/login');
+    }
+
+    dispatch(getExpenses(searchExpenseData));
+
+    return () => {
+      dispatch(reset());
+    };
+  }, [user, navigate, isError, message, dispatch, searchExpenseData]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <div>
       {width <= 680 ? (
         <div className='module-grid-container'>
-          {data &&
-            data.map((item) => {
+          {expenses &&
+            expenses.map((item) => {
               return (
                 <Card
                   className='module-grid-card'
@@ -138,7 +164,7 @@ const ExpenseList = (props) => {
         <div className='module-list-container'>
           <Table
             columns={columns}
-            dataSource={data}
+            dataSource={expenses}
             pagination={{
               pageSize: 10
             }}
@@ -159,7 +185,7 @@ const ExpenseList = (props) => {
           setModalOpen(false);
           setModalId(0);
         }}>
-        <AddExpense mode='E' setModalOpen={setModalOpen} modalId={modalId} data={data} />
+        <AddExpense mode='E' setModalOpen={setModalOpen} modalId={modalId} data={expenses} />
       </Modal>
     </div>
   );

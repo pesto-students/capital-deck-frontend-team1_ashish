@@ -1,31 +1,60 @@
 /* eslint-disable array-callback-return */
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { message as MessageNot } from 'antd';
 import { FundTwoTone } from '@ant-design/icons';
+import { getExpensesSummary, reset } from '../../../features/expenses/expenseSlice';
+import Spinner from '../../Common/Spinner';
 import './ExpenseSummary.css';
 
 const ExpenseSummary = (props) => {
-  const { data } = props;
+  const { searchExpenseData } = props;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+  const { expensesummary, isLoading, isError, message } = useSelector((state) => state.expenses);
+
   let totalExpense = 0;
   let lastExpense = 0;
   let avgExpense = 0;
-
-  if (data.length !== 0) {
-    if (data.totalexpense.length !== 0) {
-      totalExpense = data.totalexpense[0].expense_amount;
+  if (expensesummary.length !== 0) {
+    if (expensesummary.totalexpense.length !== 0) {
+      totalExpense = expensesummary.totalexpense[0].expense_amount;
     }
-    if (data.lastexpense.length !== 0) {
-      lastExpense = data.lastexpense[0].expense_amount;
+    if (expensesummary.lastexpense.length !== 0) {
+      lastExpense = expensesummary.lastexpense[0].expense_amount;
     }
-    if (data.averageexpense.length !== 0) {
+    if (expensesummary.averageexpense.length !== 0) {
       let total = 0;
       let count = 0;
-      data.averageexpense.map((item) => {
+      expensesummary.averageexpense.map((item) => {
         total += item.expense_amount;
         count += 1;
       });
 
       avgExpense = total / count;
     }
+  }
+
+  useEffect(() => {
+    if (isError) {
+      MessageNot.error(message);
+    }
+
+    if (!user) {
+      navigate('/login');
+    }
+
+    dispatch(getExpensesSummary());
+
+    return () => {
+      dispatch(reset());
+    };
+  }, [user, navigate, isError, message, dispatch, searchExpenseData]);
+
+  if (isLoading) {
+    return <Spinner />;
   }
 
   return (

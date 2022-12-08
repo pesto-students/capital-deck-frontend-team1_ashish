@@ -99,12 +99,15 @@ const AddExpense = (props) => {
   const handlerExpenseSubmit = (values) => {
     if (values.date === '') {
       MessageNot.error('Date can not be blank !!!');
+      return;
     }
     if (values.name === '') {
       MessageNot.error('Name can not be blank !!!');
+      return;
     }
     if (values.amount === '') {
       MessageNot.error('Amount can not be blank !!!');
+      return;
     }
 
     let attachement = '';

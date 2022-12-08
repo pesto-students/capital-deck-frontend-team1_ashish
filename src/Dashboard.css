@@ -66,10 +66,11 @@
 .app-modal .ant-radio-group {
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 .notify-form {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .ant-form-item {

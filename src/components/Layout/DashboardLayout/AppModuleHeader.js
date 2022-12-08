@@ -3,7 +3,7 @@
 import { Button, Modal } from 'antd';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import AddAlert from '../../CapitalAlert/AddAlert';
+import AddAlert from '../../CapitalAlert/AddAlert/AddAlert';
 import AddExpense from '../../Expense/AddExpense';
 import AddIncome from '../../Income/AddIncome';
 
@@ -66,7 +66,7 @@ const AppModuleHeader = () => {
         ) : modalCode === 'EXPENSE' ? (
           <AddExpense mode='A' setModalOpen={setModalOpen} />
         ) : modalCode === 'ALERT' ? (
-          <AddAlert />
+          <AddAlert mode='A' setModalOpen={setModalOpen} />
         ) : (
           <></>
         )}

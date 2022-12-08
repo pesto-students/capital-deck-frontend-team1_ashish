@@ -42,11 +42,20 @@ const ExpenseSearch = (props) => {
   }
 
   const onSearchHandler = () => {
+    let fromDate = '';
+    let toDate = '';
+    if (dates[0] !== '') {
+      fromDate = dayjs(dates[0]).format('YYYY-MM-DD');
+    }
+    if (dates[1] !== '') {
+      toDate = dayjs(dates[1]).format('YYYY-MM-DD');
+    }
+
     setSearchExpenseData({
       ...searchExpenseData,
       categoryid: categoryVal,
-      fromdate: dayjs(dates[0]).format('YYYY-MM-DD'),
-      todate: dayjs(dates[1]).format('YYYY-MM-DD')
+      fromdate: fromDate,
+      todate: toDate
     });
   };
 

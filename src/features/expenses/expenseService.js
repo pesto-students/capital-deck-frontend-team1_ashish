@@ -32,9 +32,11 @@ const getExpenses = async (token, searchExpenseData) => {
       Authorization: `Bearer ${token}`
     }
   };
-  console.log(searchExpenseData);
 
-  const response = await axios.get(`${baseURL}/expense`, config);
+  const response = await axios.get(
+    `${baseURL}/expense?search=${JSON.stringify(searchExpenseData)}`,
+    config
+  );
 
   return response.data;
 };

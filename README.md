@@ -2,7 +2,7 @@
 
 ![CapitalDeck Logo](./src/assets/capital-deck-logo-d.svg)
 
-This is a Finance Management Web Application which allows you to monitor your Finances and manage them conveniently bu using various various features like setting a budget for a month or getting monthly statement notifications to keep you updated. 
+This is a Finance Management Web Application which allows you to monitor your Finances and manage them conveniently by using various various features like setting a budget for a month or getting monthly statement notifications to keep you updated. You can track your Finances in one place in the Dashboard in the form of graphs as well.
 
 # Table of Contents
 
@@ -50,9 +50,11 @@ We used a tried and tested tech stack. This resulted in a fast, performant, and 
 - [Reactjs](https://reactjs.org/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Ant Design](https://ant.design/)
+- [ChartJs](https://react-chartjs-2.js.org/)
 - [Expressjs](https://expressjs.com/)
 - [MongoDB Atlas](https://www.mongodb.com/docs/atlas/)
 - [JWT Authentication](https://jwt.io/)
+- [SendGrid Email API](https://docs.sendgrid.com/)
 - [Eslint](https://eslint.org/) & [Prettier](https://prettier.io/)
 
 

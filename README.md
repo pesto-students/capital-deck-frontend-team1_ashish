@@ -11,7 +11,6 @@ This is a Finance Management Web Application which allows you to monitor your Fi
 3. [Technology Stack](#technology-stack)
 4. [Authors](#authors)
 5. [License](#license)
-
 <br/>
 
 # Demo
@@ -47,12 +46,14 @@ Test Credentials:
 <br/>
 
 # Technology Stack
-
+We used a tried and tested tech stack. This resulted in a fast, performant, and easily-extensible web app that should be fairly future-proof for the coming next several years and also followed Airbnb code standards. We used:
 - [Reactjs](https://reactjs.org/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Ant Design](https://ant.design/)
 - [Expressjs](https://expressjs.com/)
 - [MongoDB Atlas](https://www.mongodb.com/docs/atlas/)
+- [JWT Authentication](https://jwt.io/)
+- [Eslint](https://eslint.org/) & [Prettier](https://prettier.io/)
 
 
 <br/>

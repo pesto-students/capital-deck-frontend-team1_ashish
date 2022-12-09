@@ -1,5 +1,7 @@
 # Capital Deck
 
+![CapitalDeck Logo](./src/assets/capital-deck-logo-d.svg)
+
 This is a Finance Management Web Application which allows you to monitor your Finances and manage them conveniently bu using various various features like setting a budget for a month or getting monthly statement notifications to keep you updated. 
 
 # Table of Contents
@@ -17,6 +19,11 @@ This is a Finance Management Web Application which allows you to monitor your Fi
 [Live Demo](https://capitaldeck.netlify.app/)
 
 <br/>
+
+Please Note:
+
+1. We recommend using this app in Google Chrome.
+2. We recommend using this app on laptop/desktop for the best possible experience as of now.
 
 <br/>
 Test Credentials:

@@ -18,6 +18,7 @@ const ExpenseSummary = (props) => {
   let totalExpense = 0;
   let lastExpense = 0;
   let avgExpense = 0;
+
   if (expensesummary.length !== 0) {
     if (expensesummary.totalexpense.length !== 0) {
       totalExpense = expensesummary.totalexpense[0].expense_amount;

@@ -60,8 +60,9 @@ const ExpenseSearch = (props) => {
   };
 
   const onResetSearch = () => {
-    setCategoryVal('');
+    setCategoryVal(0);
     setDates(['', '']);
+    setValue(null);
     setSearchExpenseData({
       ...searchExpenseData,
       categoryid: 0,

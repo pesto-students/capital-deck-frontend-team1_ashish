@@ -1,11 +1,11 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
-
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import incomeService from './incomeService';
 
 const initialState = {
   incomes: [],
+  incomesummary: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -35,7 +35,7 @@ export const createIncome = createAsyncThunk('incomes/create', async (incomeData
   }
 });
 
-// Update  Income
+// Update income
 export const updateIncome = createAsyncThunk('incomes/update', async (incomeData, thunkAPI) => {
   const { incomeid, date, name, amount, categoryid, file } = incomeData;
 
@@ -190,5 +190,4 @@ export const incomeSlice = createSlice({
 });
 
 export const { reset } = incomeSlice.actions;
-
 export default incomeSlice.reducer;

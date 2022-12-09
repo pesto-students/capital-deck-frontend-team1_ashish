@@ -62,21 +62,21 @@ const IncomeSummary = (props) => {
     <div className='module-summary-container'>
       <div>
         <span className='summary-title'>
-          <FundTwoTone twoToneColor='#eb2f96' />
+          <FundTwoTone twoToneColor='#73ca5d' />
           Total Incomes
         </span>
         <span className='summary-data'>{totalIncome.toFixed(2)} ₹</span>
       </div>
       <div>
         <span className='summary-title'>
-          <FundTwoTone twoToneColor='#eb2f96' />
+          <FundTwoTone twoToneColor='#73ca5d' />
           Last Month Incomes
         </span>
         <span className='summary-data'>{lastIncome.toFixed(2)} ₹</span>
       </div>
       <div>
         <span className='summary-title'>
-          <FundTwoTone twoToneColor='#eb2f96' />
+          <FundTwoTone twoToneColor='#73ca5d' />
           Average Incomes (Monthy)
         </span>
         <span className='summary-data'>{avgIncome.toFixed(2)} ₹</span>

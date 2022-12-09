@@ -62,21 +62,21 @@ const ExpenseSummary = (props) => {
     <div className='module-summary-container'>
       <div>
         <span className='summary-title'>
-          <FundTwoTone twoToneColor='#eb2f96' />
+          <FundTwoTone twoToneColor='#db5858' />
           Total Expenses
         </span>
         <span className='summary-data'>{totalExpense.toFixed(2)} ₹</span>
       </div>
       <div>
         <span className='summary-title'>
-          <FundTwoTone twoToneColor='#eb2f96' />
+          <FundTwoTone twoToneColor='#db5858' />
           Last Month Expenses
         </span>
         <span className='summary-data'>{lastExpense.toFixed(2)} ₹</span>
       </div>
       <div>
         <span className='summary-title'>
-          <FundTwoTone twoToneColor='#eb2f96' />
+          <FundTwoTone twoToneColor='#db5858' />
           Average Expenses (Monthy)
         </span>
         <span className='summary-data'>{avgExpense.toFixed(2)} ₹</span>

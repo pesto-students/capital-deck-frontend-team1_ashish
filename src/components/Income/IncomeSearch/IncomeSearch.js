@@ -42,17 +42,27 @@ const IncomeSearch = (props) => {
   }
 
   const onSearchHandler = () => {
+    let fromDate = '';
+    let toDate = '';
+    if (dates[0] !== '') {
+      fromDate = dayjs(dates[0]).format('YYYY-MM-DD');
+    }
+    if (dates[1] !== '') {
+      toDate = dayjs(dates[1]).format('YYYY-MM-DD');
+    }
+
     setSearchIncomeData({
       ...searchIncomeData,
       categoryid: categoryVal,
-      fromdate: dayjs(dates[0]).format('YYYY-MM-DD'),
-      todate: dayjs(dates[1]).format('YYYY-MM-DD')
+      fromdate: fromDate,
+      todate: toDate
     });
   };
 
   const onResetSearch = () => {
-    setCategoryVal('');
+    setCategoryVal(0);
     setDates(['', '']);
+    setValue(null);
     setSearchIncomeData({
       ...searchIncomeData,
       categoryid: 0,

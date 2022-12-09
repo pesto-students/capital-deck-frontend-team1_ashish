@@ -1,10 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Space, Table, Card, message as MessageNot, Modal } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteIncome } from '../../../features/incomes/incomeSlice';
+import Spinner from '../../Common/Spinner';
+import { deleteIncome, getIncomes, reset } from '../../../features/incomes/incomeSlice';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import AddIncome from '../AddIncome';
 import './IncomeList.css';
@@ -12,12 +14,14 @@ import './IncomeList.css';
 const { Meta } = Card;
 
 const IncomeList = (props) => {
-  const { data } = props;
+  const { searchIncomeData } = props;
   const [modalOpen, setModalOpen] = useState(false);
   const [modalId, setModalId] = useState(0);
   const { height, width } = useWindowDimensions();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isError, message, isSuccess } = useSelector((state) => state.incomes);
+  const { incomes, isError, message, isSuccess, isLoading } = useSelector((state) => state.incomes);
+  const { user } = useSelector((state) => state.auth);
 
   let yScroll = 300;
 
@@ -101,12 +105,32 @@ const IncomeList = (props) => {
     }
   ];
 
+  useEffect(() => {
+    if (isError) {
+      MessageNot.error(message);
+    }
+
+    if (!user) {
+      navigate('/login');
+    }
+
+    dispatch(getIncomes(searchIncomeData));
+
+    return () => {
+      dispatch(reset());
+    };
+  }, [user, navigate, isError, message, dispatch, searchIncomeData]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <div>
       {width <= 680 ? (
         <div className='module-grid-container'>
-          {data &&
-            data.map((item) => {
+          {incomes &&
+            incomes.map((item) => {
               return (
                 <Card
                   className='module-grid-card'
@@ -138,7 +162,7 @@ const IncomeList = (props) => {
         <div className='module-list-container'>
           <Table
             columns={columns}
-            dataSource={data}
+            dataSource={incomes}
             pagination={{
               pageSize: 10
             }}
@@ -159,7 +183,7 @@ const IncomeList = (props) => {
           setModalOpen(false);
           setModalId(0);
         }}>
-        <AddIncome mode='E' setModalOpen={setModalOpen} modalId={modalId} data={data} />
+        <AddIncome mode='E' setModalOpen={setModalOpen} modalId={modalId} data={incomes} />
       </Modal>
     </div>
   );

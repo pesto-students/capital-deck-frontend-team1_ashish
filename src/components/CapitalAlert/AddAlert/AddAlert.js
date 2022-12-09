@@ -35,6 +35,7 @@ const AddAlert = (props) => {
 
     dispatch(getCategoriesByExpense());
     dispatch(getCategoriesByIncome());
+
     return () => {
       dispatch(reset());
     };
@@ -46,10 +47,13 @@ const AddAlert = (props) => {
         return item._id === modalId;
       });
 
+      let categoryId = '';
       if (filteredData[0].notify_type === 'EXCEED' || filteredData[0].notify_type === 'MONTHLY') {
         setComponentDisabled(true);
+        categoryId = '';
       } else {
         setComponentDisabled(false);
+        categoryId = filteredData[0].category_id;
       }
 
       if (filteredData[0].category_type === 'EXPENSE') {
@@ -64,7 +68,7 @@ const AddAlert = (props) => {
         title: filteredData[0].alert_title,
         notificationtype: filteredData[0].notify_type,
         type: filteredData[0].category_type,
-        category: filteredData[0].category_id,
+        category: categoryId,
         amount: filteredData[0].amount_max
       });
     }

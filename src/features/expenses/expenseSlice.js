@@ -35,7 +35,7 @@ export const createExpense = createAsyncThunk('expenses/create', async (expenseD
   }
 });
 
-// Update new expense
+// Update expense
 export const updateExpense = createAsyncThunk('expenses/update', async (expenseData, thunkAPI) => {
   const { expenseid, date, name, amount, categoryid, file } = expenseData;
 

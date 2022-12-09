@@ -33,9 +33,12 @@ const getIncomes = async (token, searchIncomeData) => {
       Authorization: `Bearer ${token}`
     }
   };
-  console.log(searchIncomeData);
 
-  const response = await axios.get(`${baseURL}/income`, config);
+  const response = await axios.get(
+    `${baseURL}/income?search=${JSON.stringify(searchIncomeData)}`,
+    config
+  );
+
   return response.data;
 };
 
@@ -48,10 +51,11 @@ const deleteIncome = async (incomeId, token) => {
   };
 
   const response = await axios.delete(`${baseURL}/income/${incomeId}`, config);
+
   return response.data;
 };
 
-// Get user expenses summary
+// Get user incomes summary
 const getIncomesSummary = async (token) => {
   const config = {
     headers: {

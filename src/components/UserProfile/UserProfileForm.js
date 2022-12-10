@@ -46,6 +46,7 @@ const UserProfileForm = () => {
 
   useEffect(() => {
     let date = '';
+    let phone = '';
     let genderoption = 'MALE';
     if (mydata.dob) {
       date = dayjs(mydata.dob);
@@ -60,13 +61,17 @@ const UserProfileForm = () => {
     }
     setImageFile('');
 
+    if (mydata.contact_no) {
+      phone = mydata.contact_no;
+    }
+
     form.setFieldsValue({
       name: mydata.name,
       email: mydata.email,
       password: '',
       dob: date,
       gender: genderoption,
-      contactno: mydata.contact_no
+      contactno: phone
     });
   }, [mydata]);
 
@@ -87,13 +92,18 @@ const UserProfileForm = () => {
   }, [user, navigate, isError, message, dispatch]);
 
   const handlerUserSubmit = (values) => {
+    let phone = '';
+    if (values.contactno) {
+      phone = values.contactno;
+    }
+
     const data = {
       id: mydata._id,
       name: values.name,
       email: values.email,
       password: values.password,
       dob: dayjs(values.dob).format('YYYY-MM-DD'),
-      contactno: values.contactno,
+      contactno: phone,
       gender: values.gender,
       file: imageFile
     };

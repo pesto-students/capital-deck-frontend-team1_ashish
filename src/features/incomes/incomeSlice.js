@@ -7,6 +7,7 @@ const initialState = {
   incomes: [],
   incomesummary: [],
   incomeamoutsummmary: [],
+  recentincome: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -118,6 +119,20 @@ export const getAmountIncomesSummary = createAsyncThunk(
   }
 );
 
+// Get user recent incomes
+export const getRecentIncomes = createAsyncThunk('incomes/getRecent', async (_, thunkAPI) => {
+  try {
+    const { token } = thunkAPI.getState().auth.user;
+    return await incomeService.getRecentIncomes(token);
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 export const incomeSlice = createSlice({
   name: 'income',
   initialState,
@@ -213,6 +228,19 @@ export const incomeSlice = createSlice({
         state.incomeamoutsummmary = action.payload;
       })
       .addCase(getAmountIncomesSummary.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getRecentIncomes.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getRecentIncomes.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.recentincome = action.payload;
+      })
+      .addCase(getRecentIncomes.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

@@ -4,6 +4,9 @@ import DashTotalExpense from '../components/Dashboard/DashTotalExpense/DashTotal
 import QuickExpense from '../components/Dashboard/QuickExpense/QuickExpense';
 import QuickIncome from '../components/Dashboard/QuickIncome/QuickIncome';
 import DashTotalIncome from '../components/Dashboard/DashTotalIncome/DashTotalIncome';
+import AmoutExpenseChart from '../components/Dashboard/AmoutExpenseChart/AmoutExpenseChart';
+import AmoutIncomeChart from '../components/Dashboard/AmoutIncomeChart/AmoutIncomeChart';
+import ExpenseIncomeBar from '../components/Dashboard/ExpenseIncomeBar/ExpenseIncomeBar';
 
 const Userboard = () => {
   return (
@@ -25,14 +28,19 @@ const Userboard = () => {
         </div>
       </div>
       <div className='dash-middle-container'>
-        <div className='dash-middle-first'>21</div>
-        <div className='dash-middle-second'>22</div>
-        <div className='dash-middle-third'>23</div>
+        <div className='dash-middle-first'>
+          <AmoutExpenseChart />
+        </div>
+        <div className='dash-middle-second'>
+          <ExpenseIncomeBar />
+        </div>
+        <div className='dash-middle-third'>
+          <AmoutIncomeChart />
+        </div>
       </div>
       <div className='dash-lower-container'>
         <div className='dash-lower-first'>31</div>
         <div className='dash-lower-second'>32</div>
-        <div className='dash-lower-third'>33</div>
       </div>
     </div>
   );

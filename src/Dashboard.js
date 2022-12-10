@@ -7,7 +7,6 @@ import Userboard from './pages/Userboard';
 import UserProfile from './pages/UserProfile';
 import Income from './pages/Income';
 import Expense from './pages/Expense';
-import Summary from './pages/Summary';
 import Alert from './pages/Alert';
 import Category from './pages/Category';
 import Calculator from './components/Calculator/Calculator';
@@ -40,7 +39,6 @@ const Dashboard = () => {
           <Route path='/userprofile' element={<UserProfile />} />
           <Route path='/income' element={<Income />} />
           <Route path='/expense' element={<Expense />} />
-          <Route path='/summary' element={<Summary />} />
           <Route path='/alert' element={<Alert />} />
           <Route path='/category' element={<Category />} />
         </Routes>

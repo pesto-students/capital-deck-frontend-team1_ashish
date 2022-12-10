@@ -68,12 +68,26 @@ const getIncomesSummary = async (token) => {
   return response.data;
 };
 
+// Get user amout by incomes
+const getAmountIncomesSummary = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
+
+  const response = await axios.get(`${baseURL}/income/amountincome`, config);
+
+  return response.data;
+};
+
 const incomeService = {
   createIncome,
   updateIncome,
   getIncomes,
   deleteIncome,
-  getIncomesSummary
+  getIncomesSummary,
+  getAmountIncomesSummary
 };
 
 export default incomeService;

@@ -68,12 +68,26 @@ const getExpensesSummary = async (token) => {
   return response.data;
 };
 
+// Get user amout by expenses
+const getAmountExpensesSummary = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
+
+  const response = await axios.get(`${baseURL}/expense/amountexpense`, config);
+
+  return response.data;
+};
+
 const expenseService = {
   createExpense,
   updateExpense,
   getExpenses,
   deleteExpense,
-  getExpensesSummary
+  getExpensesSummary,
+  getAmountExpensesSummary
 };
 
 export default expenseService;

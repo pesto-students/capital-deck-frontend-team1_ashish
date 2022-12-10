@@ -69,13 +69,6 @@ const AppBar = () => {
             <span>Expenses</span>
           </Link>
           <Link
-            to='/dashboard/summary'
-            className={`${activeTab === '/dashboard/summary' ? 'dashboard-active' : ''}`}
-            onClick={() => setActiveTab('/dashboard/summary')}>
-            <i className='lab la-wpforms' />
-            <span>All Summary</span>
-          </Link>
-          <Link
             to='/dashboard/alert'
             className={`${activeTab === '/dashboard/alert' ? 'dashboard-active' : ''}`}
             onClick={() => setActiveTab('/dashboard/alert')}>

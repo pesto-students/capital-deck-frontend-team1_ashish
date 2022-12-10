@@ -1,7 +1,7 @@
 import React from 'react';
 import './Team.css';
 import characterImg from '../../assets/character.svg';
-import member1Icon from '../../assets/member1.svg';
+import member1Icon from '../../assets/member0.svg';
 import member2Icon from '../../assets/member2.svg';
 
 const Team = () => {

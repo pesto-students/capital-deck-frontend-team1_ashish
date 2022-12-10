@@ -40,6 +40,8 @@ const AmoutIncomeChart = () => {
 
   const chartlabels = [];
   const chartdata = [];
+  const chartcolor = [];
+  const chartcolorlight = [];
   let chartWidth = 300;
   let chartMargin = 0;
 
@@ -53,6 +55,8 @@ const AmoutIncomeChart = () => {
   incomeamoutsummmary.map((item) => {
     chartlabels.push(item.categoryname);
     chartdata.push(item.totalamount);
+    chartcolor.push(item.color);
+    chartcolorlight.push(`${item.color}1c`);
   });
 
   const data = {
@@ -61,25 +65,8 @@ const AmoutIncomeChart = () => {
       {
         data: chartdata,
         label: 'Leads',
-        backgroundColor: [
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgb(61, 61, 61, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255, 159, 64, 1)',
-          'rgb(61, 61, 61, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(255, 99, 132, 1)',
-          'rgba(153, 102, 255, 1)'
-        ],
+        backgroundColor: chartcolorlight,
+        borderColor: chartcolor,
         hoverOffset: 4
       }
     ]

@@ -6,9 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { message as MessageNot } from 'antd';
 import { getAmountExpensesSummary, reset } from '../../../features/expenses/expenseSlice';
 import Spinner from '../../Common/Spinner';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import './AmoutExpenseChart.css';
 
 const AmoutExpenseChart = () => {
+  const { width } = useWindowDimensions();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -38,10 +40,14 @@ const AmoutExpenseChart = () => {
 
   const chartlabels = [];
   const chartdata = [];
-  let chartWidth = 0;
+  let chartWidth = 300;
   let chartMargin = 0;
 
-  chartWidth = 300;
+  if (width < 1280) {
+    chartWidth = 200;
+  } else {
+    chartWidth = 300;
+  }
   chartMargin = 0;
 
   expenseamoutsummmary.map((item) => {
@@ -90,7 +96,7 @@ const AmoutExpenseChart = () => {
 
   return (
     <div style={{ marginTop: `${chartMargin}px` }}>
-      <p className='card-title'>Expense by Category</p>
+      <p className='card-title'>Expense Ratio</p>
       <Pie data={data} options={options} height={150} width={chartWidth} />
     </div>
   );

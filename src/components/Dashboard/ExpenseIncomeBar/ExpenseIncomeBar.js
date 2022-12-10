@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-expressions */
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable array-callback-return */
 import React, { useEffect } from 'react';
@@ -10,6 +9,7 @@ import { message as MessageNot } from 'antd';
 import { getExpensesSummary, reset } from '../../../features/expenses/expenseSlice';
 import { getIncomesSummary } from '../../../features/incomes/incomeSlice';
 import Spinner from '../../Common/Spinner';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import './ExpenseIncomeBar.css';
 
 function toMonthName(monthNumber) {
@@ -22,11 +22,19 @@ function toMonthName(monthNumber) {
 }
 
 const ExpenseIncomeBar = () => {
+  const { width } = useWindowDimensions();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { expensesummary, isLoading, isError, message } = useSelector((state) => state.expenses);
   const { incomesummary } = useSelector((state) => state.incomes);
+
+  let chartWidth = 350;
+  if (width < 1280) {
+    chartWidth = 250;
+  } else {
+    chartWidth = 350;
+  }
 
   useEffect(() => {
     if (isError) {
@@ -151,8 +159,8 @@ const ExpenseIncomeBar = () => {
 
   return (
     <div>
-      <p className='card-title'>Income by Category</p>
-      <Bar data={data} options={options} height={150} width={350} />
+      <p className='card-title'>Finance Comparison</p>
+      <Bar data={data} options={options} height={150} width={chartWidth} />
     </div>
   );
 };

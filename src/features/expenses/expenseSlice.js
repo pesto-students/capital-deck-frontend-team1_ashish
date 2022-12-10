@@ -7,6 +7,7 @@ const initialState = {
   expenses: [],
   expensesummary: [],
   expenseamoutsummmary: [],
+  recentexpense: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -124,6 +125,20 @@ export const getAmountExpensesSummary = createAsyncThunk(
   }
 );
 
+// Get user recent expenses
+export const getRecentExpenses = createAsyncThunk('expenses/getRecent', async (_, thunkAPI) => {
+  try {
+    const { token } = thunkAPI.getState().auth.user;
+    return await expenseService.getRecentExpenses(token);
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 export const expenseSlice = createSlice({
   name: 'expense',
   initialState,
@@ -219,6 +234,19 @@ export const expenseSlice = createSlice({
         state.expenseamoutsummmary = action.payload;
       })
       .addCase(getAmountExpensesSummary.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getRecentExpenses.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getRecentExpenses.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.recentexpense = action.payload;
+      })
+      .addCase(getRecentExpenses.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

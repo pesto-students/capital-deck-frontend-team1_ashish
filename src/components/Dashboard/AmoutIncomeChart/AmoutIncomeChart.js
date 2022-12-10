@@ -1,16 +1,16 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Chart from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { useSelector, useDispatch } from 'react-redux';
 import { message as MessageNot } from 'antd';
 import { getAmountIncomesSummary, reset } from '../../../features/incomes/incomeSlice';
 import Spinner from '../../Common/Spinner';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import './AmoutIncomeChart.css';
 
 const AmoutIncomeChart = () => {
+  const { width } = useWindowDimensions();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -40,10 +40,14 @@ const AmoutIncomeChart = () => {
 
   const chartlabels = [];
   const chartdata = [];
-  let chartWidth = 0;
+  let chartWidth = 300;
   let chartMargin = 0;
 
-  chartWidth = 300;
+  if (width < 1280) {
+    chartWidth = 200;
+  } else {
+    chartWidth = 300;
+  }
   chartMargin = 0;
 
   incomeamoutsummmary.map((item) => {
@@ -93,7 +97,7 @@ const AmoutIncomeChart = () => {
 
   return (
     <div style={{ marginTop: `${chartMargin}px` }}>
-      <p className='card-title'>Income by Category</p>
+      <p className='card-title'>Income Ratio</p>
       <Pie data={data} options={options} height={150} width={chartWidth} />
     </div>
   );

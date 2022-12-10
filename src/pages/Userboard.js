@@ -7,6 +7,8 @@ import DashTotalIncome from '../components/Dashboard/DashTotalIncome/DashTotalIn
 import AmoutExpenseChart from '../components/Dashboard/AmoutExpenseChart/AmoutExpenseChart';
 import AmoutIncomeChart from '../components/Dashboard/AmoutIncomeChart/AmoutIncomeChart';
 import ExpenseIncomeBar from '../components/Dashboard/ExpenseIncomeBar/ExpenseIncomeBar';
+import RecentExpense from '../components/Dashboard/RecentExpense/RecentExpense';
+import RecentIncome from '../components/Dashboard/RecentIncome/RecentIncome';
 
 const Userboard = () => {
   return (
@@ -39,8 +41,12 @@ const Userboard = () => {
         </div>
       </div>
       <div className='dash-lower-container'>
-        <div className='dash-lower-first'>31</div>
-        <div className='dash-lower-second'>32</div>
+        <div className='dash-lower-first'>
+          <RecentExpense />
+        </div>
+        <div className='dash-lower-second'>
+          <RecentIncome />
+        </div>
       </div>
     </div>
   );

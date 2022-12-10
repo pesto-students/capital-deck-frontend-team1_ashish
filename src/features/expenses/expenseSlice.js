@@ -6,6 +6,7 @@ import expenseService from './expenseService';
 const initialState = {
   expenses: [],
   expensesummary: [],
+  expenseamoutsummmary: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -106,6 +107,23 @@ export const getExpensesSummary = createAsyncThunk(
   }
 );
 
+// Get user expenses amount summary
+export const getAmountExpensesSummary = createAsyncThunk(
+  'expenses/getAllAmoutSummary',
+  async (_, thunkAPI) => {
+    try {
+      const { token } = thunkAPI.getState().auth.user;
+      return await expenseService.getAmountExpensesSummary(token);
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const expenseSlice = createSlice({
   name: 'expense',
   initialState,
@@ -188,6 +206,19 @@ export const expenseSlice = createSlice({
         state.expensesummary = action.payload;
       })
       .addCase(getExpensesSummary.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getAmountExpensesSummary.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAmountExpensesSummary.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.expenseamoutsummmary = action.payload;
+      })
+      .addCase(getAmountExpensesSummary.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

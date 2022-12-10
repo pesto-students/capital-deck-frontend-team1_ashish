@@ -22,7 +22,6 @@ const App = () => {
     location.pathname === '/dashboard' ||
     location.pathname === '/dashboard/income' ||
     location.pathname === '/dashboard/expense' ||
-    location.pathname === '/dashboard/summary' ||
     location.pathname === '/dashboard/alert' ||
     location.pathname === '/dashboard/category' ||
     location.pathname === '/dashboard/userprofile'

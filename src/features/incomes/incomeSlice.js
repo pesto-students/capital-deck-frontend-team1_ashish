@@ -6,6 +6,7 @@ import incomeService from './incomeService';
 const initialState = {
   incomes: [],
   incomesummary: [],
+  incomeamoutsummmary: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -100,6 +101,23 @@ export const getIncomesSummary = createAsyncThunk('incomes/getAllSummary', async
   }
 });
 
+// Get user incomes amount summary
+export const getAmountIncomesSummary = createAsyncThunk(
+  'incomes/getAllAmoutSummary',
+  async (_, thunkAPI) => {
+    try {
+      const { token } = thunkAPI.getState().auth.user;
+      return await incomeService.getAmountIncomesSummary(token);
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const incomeSlice = createSlice({
   name: 'income',
   initialState,
@@ -182,6 +200,19 @@ export const incomeSlice = createSlice({
         state.incomesummary = action.payload;
       })
       .addCase(getIncomesSummary.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getAmountIncomesSummary.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAmountIncomesSummary.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.incomeamoutsummmary = action.payload;
+      })
+      .addCase(getAmountIncomesSummary.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

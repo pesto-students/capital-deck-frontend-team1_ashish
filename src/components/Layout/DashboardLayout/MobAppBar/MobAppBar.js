@@ -154,16 +154,6 @@ const MobAppBar = () => {
               <span>Expenses</span>
             </Link>
             <Link
-              to='/dashboard/summary'
-              className={`${activeTab === '/dashboard/summary' ? 'mob-dashboard-active' : ''}`}
-              onClick={() => {
-                mobHandleTabClick();
-                setActiveTab('/dashboard/summary');
-              }}>
-              <i className='lab la-wpforms' />
-              <span>All Summary</span>
-            </Link>
-            <Link
               to='/dashboard/alert'
               className={`${activeTab === '/dashboard/alert' ? 'mob-dashboard-active' : ''}`}
               onClick={() => {

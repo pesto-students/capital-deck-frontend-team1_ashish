@@ -25,8 +25,6 @@ const AppModuleHeader = () => {
     addButtonTitle = 'Add Expense';
     addButtonReq = true;
     modalCode = 'EXPENSE';
-  } else if (location.pathname === '/dashboard/summary') {
-    title = 'All Summary';
   } else if (location.pathname === '/dashboard/alert') {
     title = 'Capital Alert';
     addButtonTitle = 'Add Alert';

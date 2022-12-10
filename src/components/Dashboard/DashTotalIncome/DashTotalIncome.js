@@ -17,8 +17,8 @@ const DashTotalIncome = () => {
   let lastIncome = 0;
   let lastIncomePer = 0;
   if (incomesummary.length !== 0) {
-    if (incomesummary.totalincome.length !== 0) {
-      totalIncome = incomesummary.totalincome[0].income_amount;
+    if (incomesummary.currentincome.length !== 0) {
+      totalIncome = incomesummary.currentincome[0].income_amount;
     }
     if (incomesummary.lastincome.length !== 0) {
       lastIncome = incomesummary.lastincome[0].income_amount;

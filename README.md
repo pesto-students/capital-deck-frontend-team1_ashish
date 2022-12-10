@@ -1,8 +1,8 @@
-# Capital Deck
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fda40e11-1bcb-4e68-8e7f-c08c71abda32/deploy-status)](https://app.netlify.com/sites/capitaldeck/deploys)
+<h1><img align="center" height="35" src="./src/assets/capital-deck-logo-d.svg"></h1>
 
-![CapitalDeck Logo](./src/assets/capital-deck-logo-d.svg)
 
-This is a Finance Management Web Application which allows you to monitor your Finances and manage them conveniently by using various various features like setting a budget for a month or getting monthly statement notifications to keep you updated. You can track your Finances in one place in the Dashboard in the form of graphs as well.
+This is a Finance Management Web Application which allows you to monitor your Finances and manage them conveniently by using various various features like setting a budget for a month or getting monthly statement notifications to keep you updated. You can track your Finances in one place in the Dashboard where they are represented in the form of graphs as well.
 
 # Table of Contents
 

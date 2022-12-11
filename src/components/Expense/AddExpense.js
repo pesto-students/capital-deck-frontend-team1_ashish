@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-unstable-nested-components */
@@ -25,6 +26,7 @@ import {
 } from '../../features/categories/categorySlice';
 import { createExpense, updateExpense } from '../../features/expenses/expenseSlice';
 import Spinner from '../Common/Spinner';
+import { baseUploadURL } from '../../util/BaseUrl';
 
 const fileprops = {
   name: 'file',
@@ -44,6 +46,7 @@ const AddExpense = (props) => {
   const { user } = useSelector((state) => state.auth);
   const { categoriesByExpense, isError, message } = useSelector((state) => state.categories);
   const { isLoading } = useSelector((state) => state.expenses);
+  const [attachment, setAttachment] = useState({ path: '', name: '' });
 
   useEffect(() => {
     if (mode === 'E') {
@@ -51,6 +54,13 @@ const AddExpense = (props) => {
         return item._id === modalId;
       });
 
+      if (filteredData[0].file_path) {
+        setAttachment({
+          ...attachment,
+          path: filteredData[0].file_path,
+          name: filteredData[0].file_name
+        });
+      }
       form.setFieldsValue({
         date: dayjs(filteredData[0].expense_date),
         name: filteredData[0].expense_title,
@@ -131,6 +141,11 @@ const AddExpense = (props) => {
       MessageNot.success('Expense added successfully!!!');
     }
     form.resetFields();
+    setAttachment({
+      ...attachment,
+      path: '',
+      name: ''
+    });
     setModalOpen(false);
   };
 
@@ -216,12 +231,28 @@ const AddExpense = (props) => {
             <Button icon={<UploadOutlined />}>Choose file</Button>
           </Upload>
         </Form.Item>
+        <Form.Item>
+          {attachment.path !== '' ? (
+            <a target='_blank' href={`${baseUploadURL}${attachment.path}`} rel='noreferrer'>
+              {attachment.name}
+            </a>
+          ) : (
+            <></>
+          )}
+        </Form.Item>
         <Form.Item className='modal-button'>
           <Button
             style={{
               margin: '0 8px'
             }}
-            onClick={() => setModalOpen(false)}>
+            onClick={() => {
+              setAttachment({
+                ...attachment,
+                path: '',
+                name: ''
+              });
+              setModalOpen(false);
+            }}>
             Exit
           </Button>
           <Button htmlType='submit' className='modal-save'>

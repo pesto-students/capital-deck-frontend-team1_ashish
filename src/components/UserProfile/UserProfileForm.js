@@ -236,7 +236,10 @@ const UserProfileForm = () => {
           <Form.Item label='Contact' name='contactno' className='antd-user-form-mod'>
             <Input className='antd-user-form-item-mod' />
           </Form.Item>
-          <Form.Item label='Gender' name='gender' className='antd-user-form-mod'>
+          <Form.Item
+            label='Gender'
+            name='gender'
+            className='antd-user-form-mod option-user-form-mod'>
             <Radio.Group className='antd-user-form-item-mod'>
               <Radio value='MALE'>Male</Radio>
               <Radio value='FEMALE'>Female</Radio>

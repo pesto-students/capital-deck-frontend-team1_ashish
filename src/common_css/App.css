@@ -260,7 +260,7 @@
 
   .dash-upper-container > div {
     width: 75vw;
-    height: 250px;
+    height: 150px;
     margin-top: 15px;
   }
 
@@ -272,7 +272,7 @@
 
   .dash-lower-container > div {
     width: 75vw;
-    height: 250px;
+    height: auto;
     margin-top: 15px;
   }
 }

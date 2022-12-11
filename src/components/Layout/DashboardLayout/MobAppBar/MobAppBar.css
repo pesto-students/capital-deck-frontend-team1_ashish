@@ -202,7 +202,7 @@
   overflow-y: auto;
   left: 0;
   box-shadow: 0 0 4px 2px rgb(0 0 0 / 35%);
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   align-items: flex-start;
   width: 70vw;
@@ -215,6 +215,7 @@
   transition: 0.2s;
   opacity: 0;
   visibility: hidden;
+  display: none;
 }
 
 .mob-dashboard-active {

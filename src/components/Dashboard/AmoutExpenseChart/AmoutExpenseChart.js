@@ -45,7 +45,13 @@ const AmoutExpenseChart = () => {
   let chartWidth = 300;
   let chartMargin = 0;
 
-  if (width < 1280) {
+  if (width < 420) {
+    chartWidth = 200;
+  } else if (width < 580) {
+    chartWidth = 300;
+  } else if (width < 680) {
+    chartWidth = 400;
+  } else if (width < 1280) {
     chartWidth = 200;
   } else {
     chartWidth = 300;
@@ -74,11 +80,9 @@ const AmoutExpenseChart = () => {
 
   const options = {
     responsive: true,
-    plugins: {
-      legend: {
-        display: true,
-        position: 'left'
-      }
+    legend: {
+      display: true,
+      position: 'left'
     }
   };
 

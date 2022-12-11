@@ -20,7 +20,6 @@ body {
   flex-direction: column;
   height: auto;
   justify-content: space-between;
-  overflow-x: hidden;
 }
 
 .common-container {

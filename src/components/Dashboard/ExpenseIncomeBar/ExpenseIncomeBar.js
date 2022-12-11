@@ -30,7 +30,15 @@ const ExpenseIncomeBar = () => {
   const { incomesummary } = useSelector((state) => state.incomes);
 
   let chartWidth = 350;
-  if (width < 1280) {
+  if (width < 340) {
+    chartWidth = 200;
+  } else if (width < 510) {
+    chartWidth = 250;
+  } else if (width < 680) {
+    chartWidth = 350;
+  } else if (width < 820) {
+    chartWidth = 200;
+  } else if (width < 1280) {
     chartWidth = 250;
   } else {
     chartWidth = 350;

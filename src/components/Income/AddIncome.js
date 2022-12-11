@@ -26,6 +26,7 @@ import {
 } from '../../features/categories/categorySlice';
 import { createIncome, updateIncome } from '../../features/incomes/incomeSlice';
 import Spinner from '../Common/Spinner';
+import { baseUploadURL } from '../../util/BaseUrl';
 
 const fileprops = {
   name: 'file',
@@ -45,6 +46,7 @@ const AddIncome = (props) => {
   const { user } = useSelector((state) => state.auth);
   const { categoriesByIncome, isError, message } = useSelector((state) => state.categories);
   const { isLoading } = useSelector((state) => state.incomes);
+  const [attachment, setAttachment] = useState({ path: '', name: '' });
 
   useEffect(() => {
     if (mode === 'E') {
@@ -52,6 +54,13 @@ const AddIncome = (props) => {
         return item._id === modalId;
       });
 
+      if (filteredData[0].file_path) {
+        setAttachment({
+          ...attachment,
+          path: filteredData[0].file_path,
+          name: filteredData[0].file_name
+        });
+      }
       form.setFieldsValue({
         date: dayjs(filteredData[0].income_date),
         name: filteredData[0].income_title,
@@ -132,6 +141,11 @@ const AddIncome = (props) => {
       MessageNot.success('Income added successfully!!!');
     }
     form.resetFields();
+    setAttachment({
+      ...attachment,
+      path: '',
+      name: ''
+    });
     setModalOpen(false);
   };
 
@@ -217,12 +231,28 @@ const AddIncome = (props) => {
             <Button icon={<UploadOutlined />}>Choose file</Button>
           </Upload>
         </Form.Item>
+        <Form.Item>
+          {attachment.path !== '' ? (
+            <a target='_blank' href={`${baseUploadURL}${attachment.path}`} rel='noreferrer'>
+              {attachment.name}
+            </a>
+          ) : (
+            <></>
+          )}
+        </Form.Item>
         <Form.Item className='modal-button'>
           <Button
             style={{
               margin: '0 8px'
             }}
-            onClick={() => setModalOpen(false)}>
+            onClick={() => {
+              setAttachment({
+                ...attachment,
+                path: '',
+                name: ''
+              });
+              setModalOpen(false);
+            }}>
             Exit
           </Button>
           <Button htmlType='submit' className='modal-save'>

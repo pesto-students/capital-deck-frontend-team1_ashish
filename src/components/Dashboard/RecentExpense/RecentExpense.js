@@ -3,15 +3,17 @@ import { Table, message as MessageNot } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Spinner from '../../Common/Spinner';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import { getRecentExpenses, reset } from '../../../features/expenses/expenseSlice';
 
 const RecentExpense = () => {
+  const { width } = useWindowDimensions();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { recentexpense, isError, message, isLoading } = useSelector((state) => state.expenses);
   const { user } = useSelector((state) => state.auth);
 
-  const yScroll = 170;
+  const yScroll = 150;
 
   const columns = [
     {
@@ -38,12 +40,15 @@ const RecentExpense = () => {
       dataIndex: 'expense_amount',
       width: 100,
       render: (record) => `${record} ₹`
-    },
-    {
-      title: 'Date',
-      dataIndex: 'expense_date'
     }
   ];
+
+  if (width > 600) {
+    columns.push({
+      title: 'Date',
+      dataIndex: 'expense_date'
+    });
+  }
 
   useEffect(() => {
     if (isError) {

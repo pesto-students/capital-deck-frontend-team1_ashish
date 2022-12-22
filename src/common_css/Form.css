@@ -45,6 +45,12 @@
   border-radius: 8px;
 }
 
+.demo-button {
+  color: #285ac5;
+  background-color: #ffffff;
+  border-color: #285ac5;
+}
+
 .login-button:hover {
   color: #b0e3e0 !important;
 }

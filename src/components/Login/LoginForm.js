@@ -33,6 +33,12 @@ const LoginForm = () => {
     dispatch(login(formInput));
   };
 
+  const handleDemoSubmit = (e) => {
+    e.preventDefault();
+    const demoLogin = { email: 'pestoproject@demomail.com', password: 'Pesto@123' };
+    dispatch(login(demoLogin));
+  };
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -87,6 +93,14 @@ const LoginForm = () => {
         <Form.Item>
           <Button htmlType='submit' className='login-button'>
             LOGIN
+          </Button>
+        </Form.Item>
+        <Form.Item>
+          <Button
+            htmlType='submit'
+            className='demo-button login-button'
+            onClick={(e) => handleDemoSubmit(e)}>
+            DEMO
           </Button>
         </Form.Item>
       </Form>

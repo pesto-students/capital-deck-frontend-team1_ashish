@@ -1,0 +1,188 @@
+.cat-form-container {
+  display: flex;
+  flex-direction: column;
+  width: calc(78vw - 40px);
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.cat-form-title {
+  font-weight: bold;
+  margin: 10px 0px;
+}
+
+.cat-form-control {
+  display: flex;
+  flex-direction: row;
+}
+
+.cat-form-left {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.cat-form-right {
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.cat-form-firstrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cat-form-secondrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.desc-form-item {
+  width: 100%;
+}
+
+.color-picker-item .ant-form-item-control-input-content {
+  font-size: 20px;
+  border: 1px solid #b5b4b4;
+  border-radius: 5px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 75px;
+  cursor: pointer;
+}
+
+.color-picker {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.title-control-item {
+  width: 20vw;
+}
+
+.add-cat-button {
+  width: 100px;
+  background-color: #1a5a9b;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.add-cat-button:hover {
+  color: #1a5a9b !important;
+  background-color: #ffffff !important;
+}
+
+.reset-cat-button {
+  width: 50px;
+  background-color: #ffffff;
+  color: #1a5a9b;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+@media (max-width: 1240px) {
+  .cat-form-container {
+    width: calc(76vw - 40px);
+  }
+}
+
+@media (max-width: 1080px) {
+  .cat-form-left {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+  }
+
+  .cat-form-right {
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+}
+
+@media (max-width: 960px) {
+  .cat-form-container {
+    width: calc(90vw - 40px);
+  }
+}
+
+@media (max-width: 720px) {
+  .cat-form-left {
+    width: 80%;
+  }
+
+  .cat-form-right {
+    width: 20%;
+  }
+
+  .cat-form-right {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 680px) {
+  .cat-upper-container {
+    height: auto;
+    margin-top: 15px;
+  }
+
+  .cat-lower-container {
+    height: auto;
+    margin-top: 15px;
+  }
+
+  .cat-form-control {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cat-form-firstrow {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cat-form-left {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cat-form-right {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+  }
+
+  .add-cat-button {
+    margin: 5px;
+    width: 70%;
+  }
+
+  .reset-cat-button {
+    margin-bottom: 0px;
+  }
+
+  .title-control-item {
+    width: 96%;
+  }
+
+  .ant-form-item-label > label {
+    width: 100px !important;
+  }
+}

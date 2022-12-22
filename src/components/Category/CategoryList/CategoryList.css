@@ -1,0 +1,104 @@
+.cat-list-container {
+  display: flex;
+  flex-direction: column;
+  width: calc(78vw - 40px);
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  height: 40vh;
+}
+
+.cat-list-container .ant-table-small {
+  line-height: 1 !important;
+}
+
+.cat-list-container .ant-pagination {
+  margin: 8px 0 !important;
+  padding-right: 50px !important;
+}
+
+.cat-list-container .table_button {
+  font-size: 20px;
+}
+
+.cat-list-container .ant-table-tbody > tr:nth-child(odd) {
+  background-color: #eaeaea6b;
+}
+
+.cat-grid-container {
+  display: flex;
+  flex-direction: column;
+  width: calc(78vw - 40px);
+  background-color: transparent;
+  padding: 20px;
+  border-radius: 8px;
+  height: 40vh;
+}
+
+.cat-list-container .table_color {
+  display: flex;
+  height: 15px;
+  width: 15px;
+  margin-left: 10px;
+  background-color: red;
+}
+
+@media (max-width: 1240px) {
+  .cat-grid-container {
+    width: calc(76vw - 40px);
+  }
+}
+
+@media (max-width: 960px) {
+  .cat-grid-container {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    padding: 0px 0px 10px;
+    overflow-y: auto;
+  }
+
+  .cat-grid-container .cat-grid-card {
+    width: 90vw;
+    height: auto;
+    margin-top: 15px;
+  }
+
+  .cat-grid-container .cat-grid-card .ant-card-body {
+    padding: 24px 24px 10px !important;
+  }
+
+  .cat-grid-container .meda-card {
+    margin-bottom: 15px !important;
+  }
+
+  .cat-grid-container .meda-card .ant-card-meta-detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .cat-grid-container .meda-card .ant-card-meta-detail .ant-card-meta-title {
+    vertical-align: middle;
+    margin-bottom: 0px !important;
+    margin-left: 10px;
+    color: #0c3e72 !important;
+  }
+
+  .cat-grid-container .meda-card .ant-card-meta-detail .ant-card-meta-description {
+    vertical-align: middle;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 1240px) {
+  .cat-list-container {
+    width: calc(76vw - 40px);
+  }
+}
+
+@media (max-width: 960px) {
+  .cat-list-container {
+    width: calc(90vw - 40px);
+  }
+}

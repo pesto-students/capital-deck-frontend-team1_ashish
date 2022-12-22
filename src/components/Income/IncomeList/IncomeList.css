@@ -1,0 +1,104 @@
+.module-list-container {
+  display: flex;
+  flex-direction: column;
+  width: calc(78vw - 40px);
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  height: 52vh;
+}
+
+.module-list-container .ant-table-small {
+  line-height: 1 !important;
+}
+
+.module-list-container .ant-pagination {
+  margin: 12px 0 !important;
+  padding-right: 50px !important;
+}
+
+.module-list-container .table_button {
+  font-size: 20px;
+}
+
+.module-list-container .ant-table-tbody > tr:nth-child(odd) {
+  background-color: #eaeaea6b;
+}
+
+.module-grid-container {
+  display: flex;
+  flex-direction: column;
+  width: calc(78vw - 40px);
+  background-color: transparent;
+  padding: 20px;
+  border-radius: 8px;
+  height: 50vh;
+}
+
+.module-grid-container .table_color {
+  display: flex;
+  height: 15px;
+  width: 15px;
+  margin-left: 10px;
+  background-color: red;
+}
+
+@media (max-width: 1240px) {
+  .module-grid-container {
+    width: calc(76vw - 40px);
+  }
+}
+
+@media (max-width: 960px) {
+  .module-grid-container {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    padding: 0px 0px 10px;
+    overflow-y: auto;
+  }
+
+  .module-grid-container .module-grid-card {
+    width: 90vw;
+    height: auto;
+    margin-top: 15px;
+  }
+
+  .module-grid-container .module-grid-card .ant-card-body {
+    padding: 24px 24px 10px !important;
+  }
+
+  .module-grid-container .meda-card {
+    margin-bottom: 15px !important;
+  }
+
+  .module-grid-container .meda-card .ant-card-meta-detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .module-grid-container .meda-card .ant-card-meta-detail .ant-card-meta-title {
+    vertical-align: middle;
+    margin-bottom: 0px !important;
+    margin-left: 10px;
+    color: #0c3e72 !important;
+  }
+
+  .module-grid-container .meda-card .ant-card-meta-detail .ant-card-meta-description {
+    vertical-align: middle;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 1240px) {
+  .module-list-container {
+    width: calc(76vw - 40px);
+  }
+}
+
+@media (max-width: 960px) {
+  .module-list-container {
+    width: calc(90vw - 40px);
+  }
+}

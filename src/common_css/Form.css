@@ -1,0 +1,95 @@
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.form-container .form-label {
+  color: #2c3e50;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0px 0px 20px 0px;
+}
+
+.error-container {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-form-label {
+  color: #2c3e50;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 5px solid #2c3e50;
+  padding: 10px 0px;
+  margin: 15px 0px 5px;
+  text-align: center;
+}
+
+.login-button {
+  width: 20vw;
+  color: #ffffff;
+  height: 40px;
+  margin: 20px 0px 10px;
+  background-color: #285ac5;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.demo-button {
+  color: #285ac5;
+  background-color: #ffffff;
+  border-color: #285ac5;
+}
+
+.login-button:hover {
+  color: #b0e3e0 !important;
+}
+
+.antd-log-form-item-mod {
+  width: 20vw;
+  margin: 10px 0px;
+}
+
+.antd-log-form-item-textbox-mod {
+  height: 40px;
+}
+
+@media (max-width: 1180px) {
+  .login-button {
+    width: 30vw;
+  }
+
+  .antd-log-form-item-mod {
+    width: 30vw;
+  }
+}
+
+@media (max-width: 780px) {
+  .login-button {
+    width: 40vw;
+  }
+
+  .antd-log-form-item-mod {
+    width: 40vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-button {
+    width: 50vw;
+  }
+
+  .antd-log-form-item-mod {
+    width: 50vw;
+  }
+}

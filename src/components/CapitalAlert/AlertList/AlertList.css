@@ -1,0 +1,104 @@
+.alert-main-container {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  width: 80vw;
+  overflow-y: auto;
+}
+
+.alert-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px;
+  align-content: flex-end;
+  justify-content: flex-start;
+}
+
+.alert-card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: 18%;
+}
+
+.alert-card > h3 {
+  margin: 10px 0px;
+  color: #1a5a9b;
+}
+
+.alert-card > p {
+  margin: 10px 0px;
+  font-size: 14px;
+}
+
+.alert-card-button {
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.alert-card-button .viewbtn {
+  background: none;
+  border: none;
+  width: 50px;
+  cursor: pointer;
+}
+
+.alert-card-button .viewbtn:hover {
+  color: #1a5a9b;
+}
+
+.alert-card-button .deletebtn {
+  margin: 5px;
+  width: 80px;
+  height: 30px;
+  background-color: #1a5a9b;
+  color: #ffffff;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.alert-card-button .deletebtn:hover {
+  background-color: #ffffff;
+  color: #1a5a9b;
+  border: 1px solid #1a5a9b;
+}
+
+@media (max-width: 1300px) {
+  .alert-card {
+    width: 17%;
+  }
+}
+
+@media (max-width: 1150px) {
+  .alert-card {
+    width: 23%;
+  }
+}
+
+@media (max-width: 960px) {
+  .alert-main-container {
+    width: 100vw;
+  }
+  .alert-card {
+    width: 23%;
+  }
+}
+
+@media (max-width: 720px) {
+  .alert-card {
+    width: 38%;
+  }
+}
+
+@media (max-width: 630px) {
+  .alert-card {
+    width: 100%;
+  }
+}

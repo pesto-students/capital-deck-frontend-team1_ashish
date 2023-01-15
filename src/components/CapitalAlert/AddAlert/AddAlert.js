@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Radio, Select, InputNumber, Button, message as MessageNot } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';

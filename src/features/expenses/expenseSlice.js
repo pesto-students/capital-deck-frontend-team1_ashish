@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-underscore-dangle */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import expenseService from './expenseService';
 

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import { Button, Form, Input, message } from 'antd';
 import axios from 'axios';

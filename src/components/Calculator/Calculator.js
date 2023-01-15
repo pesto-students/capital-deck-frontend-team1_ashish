@@ -1,6 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-return-assign */
-/* eslint-disable radix */
 import { Button } from 'antd';
 import React, { useState } from 'react';
 import './Calculator.css';

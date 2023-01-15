@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import { message as MessageNot, Modal } from 'antd';
 import { useNavigate } from 'react-router-dom';
@@ -60,7 +59,7 @@ const CapitalAlert = () => {
         {alerts &&
           alerts.map((item) => {
             return (
-              <div className='alert-card'>
+              <div key={item._id} className='alert-card'>
                 <h3>{item.alert_title}</h3>
                 <p>{dayjs(item.createdAt).format('YYYY-MM-DD HH:MM')}</p>
                 <span className='alert-card-button'>

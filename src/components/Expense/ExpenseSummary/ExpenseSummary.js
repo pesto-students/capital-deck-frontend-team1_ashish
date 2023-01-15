@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';

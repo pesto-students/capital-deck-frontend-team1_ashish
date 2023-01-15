@@ -1,7 +1,3 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/no-unstable-nested-components */
 import React, { useState, useRef, useEffect } from 'react';
 import { PlusOutlined, UploadOutlined } from '@ant-design/icons';
 import {

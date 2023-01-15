@@ -1,5 +1,3 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { Space, Table, Card, message as MessageNot, Modal } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
@@ -135,6 +133,7 @@ const ExpenseList = (props) => {
             expenses.map((item) => {
               return (
                 <Card
+                  key={item._id}
                   className='module-grid-card'
                   actions={[
                     <EditOutlined key='edit' onClick={() => editExpenseHandler(item._id)} />,

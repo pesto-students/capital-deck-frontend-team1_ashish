@@ -1,5 +1,3 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Space, Table, Card, message as MessageNot } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
@@ -116,6 +114,7 @@ const CategoryList = (props) => {
             data.map((item) => {
               return (
                 <Card
+                  key={item._id}
                   className='cat-grid-card'
                   actions={[
                     <EditOutlined key='edit' onClick={() => editCategoryHandler(item._id)} />,

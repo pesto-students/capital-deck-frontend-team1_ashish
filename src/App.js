@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Layout/LandingLayout/Navbar/Navbar';

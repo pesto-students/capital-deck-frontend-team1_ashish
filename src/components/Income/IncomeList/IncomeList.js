@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Space, Table, Card, message as MessageNot, Modal } from 'antd';
+import { Space, Table, Card, message as MessageNot, Modal, Popconfirm } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -39,6 +39,10 @@ const IncomeList = (props) => {
     if (isSuccess) {
       MessageNot.success('Income deleted successfully!!!');
     }
+  };
+
+  const cancel = () => {
+    return false;
   };
 
   const editIncomeHandler = (id) => {
@@ -96,7 +100,16 @@ const IncomeList = (props) => {
             <EditOutlined onClick={() => editIncomeHandler(record._id)} />
           </span>
           <span className='table_button'>
-            <DeleteOutlined onClick={() => deleteIncomeHandler(record._id)} />
+            <Popconfirm
+              title='Are you sure to delete this income?'
+              description='Are you sure to delete this income?'
+              onConfirm={() => deleteIncomeHandler(record._id)}
+              onCancel={cancel}
+              placement='left'
+              okText='Yes'
+              cancelText='No'>
+              <DeleteOutlined />
+            </Popconfirm>
           </span>
         </Space>
       )
@@ -135,7 +148,17 @@ const IncomeList = (props) => {
                   className='module-grid-card'
                   actions={[
                     <EditOutlined key='edit' onClick={() => editIncomeHandler(item._id)} />,
-                    <DeleteOutlined key='delete' onClick={() => deleteIncomeHandler(item._id)} />
+                    <Popconfirm
+                      title='Are you sure to delete this income?'
+                      description='Are you sure to delete this income?'
+                      onConfirm={() => deleteIncomeHandler(item._id)}
+                      onCancel={cancel}
+                      placement='top'
+                      okText='Yes'
+                      cancelText='No'
+                      key='delete'>
+                      <DeleteOutlined />
+                    </Popconfirm>
                   ]}>
                   <Meta className='meda-card' title='Date:' description={item.income_date} />
                   <Meta
@@ -146,12 +169,12 @@ const IncomeList = (props) => {
                   <Meta
                     className='meda-card'
                     title='Category:'
-                    description={item.category_id.category_name}
+                    description={item.category_id?.category_name}
                   />
                   <Meta className='meda-card' title='Name:' description={item.income_title} />
                   <i
                     className='table_color'
-                    style={{ backgroundColor: item.category_id.color, width: '60px' }}
+                    style={{ backgroundColor: item.category_id?.color, width: '60px' }}
                   />
                 </Card>
               );

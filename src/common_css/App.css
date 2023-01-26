@@ -171,7 +171,7 @@
   border-radius: 8px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -193,6 +193,10 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
+}
+
+.ant-popconfirm-buttons .ant-btn-primary {
+  background-color: #1a5a9b !important;
 }
 
 @media (max-width: 960px) {

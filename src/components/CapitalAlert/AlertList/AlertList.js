@@ -82,7 +82,7 @@ const CapitalAlert = () => {
       </div>
       <Modal
         className='app-modal'
-        title='Expenses'
+        title='Alert'
         centered
         footer={[]}
         open={modalOpen}

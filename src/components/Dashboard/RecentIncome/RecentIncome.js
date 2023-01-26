@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Spinner from '../../Common/Spinner';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import { getRecentIncomes, reset } from '../../../features/incomes/incomeSlice';
+import './RecentIncome.css';
 
 const RecentIncome = () => {
   const { width } = useWindowDimensions();
@@ -72,7 +73,7 @@ const RecentIncome = () => {
 
   return (
     <div className='dash-list-container'>
-      <p className='card-title'>Recent 5 Incomes</p>
+      <p className='card-recent-title'>Recent 5 Incomes</p>
       <Table
         columns={columns}
         dataSource={recentincome}

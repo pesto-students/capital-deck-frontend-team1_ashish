@@ -57,12 +57,13 @@ const AmoutIncomeChart = () => {
   }
   chartMargin = 0;
 
-  incomeamoutsummmary.map((item) => {
-    chartlabels.push(item.categoryname);
-    chartdata.push(item.totalamount);
-    chartcolor.push(item.color);
-    chartcolorlight.push(`${item.color}1c`);
-  });
+  incomeamoutsummmary &&
+    incomeamoutsummmary.map((item) => {
+      chartlabels.push(item.categoryname);
+      chartdata.push(item.totalamount);
+      chartcolor.push(item.color);
+      chartcolorlight.push(`${item.color}1c`);
+    });
 
   const data = {
     labels: chartlabels,

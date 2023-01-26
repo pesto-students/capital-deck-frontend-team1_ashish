@@ -182,10 +182,13 @@ const AddAlert = (props) => {
           <Form.Item label='Category' name='category'>
             <Select
               disabled={componentDisabled}
-              options={categoryOption.map((item) => ({
-                label: item.category_name,
-                value: item._id
-              }))}
+              options={
+                categoryOption &&
+                categoryOption.map((item) => ({
+                  label: item != undefined ? item.category_name : '',
+                  value: item != undefined ? item._id : ''
+                }))
+              }
             />
           </Form.Item>
           <Form.Item label='Amount Limit (₹)' name='amount'>

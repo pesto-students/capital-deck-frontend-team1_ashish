@@ -57,12 +57,13 @@ const AmoutExpenseChart = () => {
   }
   chartMargin = 0;
 
-  expenseamoutsummmary.map((item) => {
-    chartlabels.push(item.categoryname);
-    chartdata.push(item.totalamount);
-    chartcolor.push(item.color);
-    chartcolorlight.push(`${item.color}1c`);
-  });
+  expenseamoutsummmary &&
+    expenseamoutsummmary.map((item) => {
+      chartlabels.push(item.categoryname);
+      chartdata.push(item.totalamount);
+      chartcolor.push(item.color);
+      chartcolorlight.push(`${item.color}1c`);
+    });
 
   const data = {
     labels: chartlabels,

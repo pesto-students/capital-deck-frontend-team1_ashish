@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Space, Table, Card, message as MessageNot, Modal } from 'antd';
+import { Space, Table, Card, message as MessageNot, Modal, Popconfirm } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -41,6 +41,10 @@ const ExpenseList = (props) => {
     if (isSuccess) {
       MessageNot.success('Expense deleted successfully!!!');
     }
+  };
+
+  const cancel = () => {
+    return false;
   };
 
   const editExpenseHandler = (id) => {
@@ -98,7 +102,16 @@ const ExpenseList = (props) => {
             <EditOutlined onClick={() => editExpenseHandler(record._id)} />
           </span>
           <span className='table_button'>
-            <DeleteOutlined onClick={() => deleteExpenseHandler(record._id)} />
+            <Popconfirm
+              title='Are you sure to delete this expense?'
+              description='Are you sure to delete this expense?'
+              onConfirm={() => deleteExpenseHandler(record._id)}
+              onCancel={cancel}
+              placement='left'
+              okText='Yes'
+              cancelText='No'>
+              <DeleteOutlined />
+            </Popconfirm>
           </span>
         </Space>
       )
@@ -137,7 +150,17 @@ const ExpenseList = (props) => {
                   className='module-grid-card'
                   actions={[
                     <EditOutlined key='edit' onClick={() => editExpenseHandler(item._id)} />,
-                    <DeleteOutlined key='delete' onClick={() => deleteExpenseHandler(item._id)} />
+                    <Popconfirm
+                      title='Are you sure to delete this expense?'
+                      description='Are you sure to delete this expense?'
+                      onConfirm={() => deleteExpenseHandler(item._id)}
+                      onCancel={cancel}
+                      placement='top'
+                      okText='Yes'
+                      cancelText='No'
+                      key='delete'>
+                      <DeleteOutlined />
+                    </Popconfirm>
                   ]}>
                   <Meta className='meda-card' title='Date:' description={item.expense_date} />
                   <Meta
@@ -148,12 +171,12 @@ const ExpenseList = (props) => {
                   <Meta
                     className='meda-card'
                     title='Category:'
-                    description={item.category_id.category_name}
+                    description={item.category_id?.category_name}
                   />
                   <Meta className='meda-card' title='Name:' description={item.expense_title} />
                   <i
                     className='table_color'
-                    style={{ backgroundColor: item.category_id.color, width: '60px' }}
+                    style={{ backgroundColor: item.category_id?.color, width: '60px' }}
                   />
                 </Card>
               );

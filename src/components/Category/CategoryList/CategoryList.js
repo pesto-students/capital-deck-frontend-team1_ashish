@@ -1,5 +1,5 @@
 import React from 'react';
-import { Space, Table, Card, message as MessageNot } from 'antd';
+import { Space, Table, Card, message as MessageNot, Popconfirm } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteCategory } from '../../../features/categories/categorySlice';
@@ -32,6 +32,10 @@ const CategoryList = (props) => {
     if (isSuccess) {
       MessageNot.success('Category deleted successfully!!!');
     }
+  };
+
+  const cancel = () => {
+    return false;
   };
 
   const editCategoryHandler = (id) => {
@@ -99,7 +103,16 @@ const CategoryList = (props) => {
             <EditOutlined onClick={() => editCategoryHandler(record._id)} />
           </span>
           <span className='table_button'>
-            <DeleteOutlined onClick={() => deleteCategoryHandler(record._id)} />
+            <Popconfirm
+              title='Are you sure to delete this category?'
+              description='Are you sure to delete this category?'
+              onConfirm={() => deleteCategoryHandler(record._id)}
+              onCancel={cancel}
+              placement='left'
+              okText='Yes'
+              cancelText='No'>
+              <DeleteOutlined />
+            </Popconfirm>
           </span>
         </Space>
       )

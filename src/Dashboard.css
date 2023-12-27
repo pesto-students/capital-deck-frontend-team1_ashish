@@ -1,0 +1,129 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+
+.app-main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 82vw;
+}
+
+.app-title {
+  display: flex;
+  height: 8vh;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 2px #b9b9b9;
+}
+
+.app-title-label {
+  font-size: 18px;
+  text-indent: 20px;
+  font-weight: bold;
+  color: #605c5c;
+}
+
+.category-module .ant-float-btn-body {
+  background-color: #093e74 !important;
+}
+
+.ant-float-btn {
+  box-shadow: 0px 17px 10px -10px rgb(0 0 0 / 40%);
+}
+
+.app-title .add-button {
+  margin-right: 30px;
+  width: auto;
+  background-color: #1a5a9b;
+  color: #ffffff;
+  font-weight: bold;
+  height: 34px;
+}
+
+.app-title .add-button:hover {
+  margin-right: 30px;
+  width: auto;
+  background-color: #ffffff;
+  color: #1a5a9b;
+  border: 1px solid #1a5a9b;
+  font-weight: bold;
+  height: 34px;
+}
+
+.ant-modal-body {
+  border-top: 2px solid lightgray;
+}
+
+.app-modal .ant-btn {
+  width: auto;
+}
+
+.app-modal .ant-radio-group {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.notify-form {
+  margin-top: 5px;
+}
+
+.ant-form-item {
+  margin: 10px;
+}
+
+.app-modal .ant-upload-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-modal .ant-upload-list {
+  max-width: 250px;
+}
+
+.app-modal .ant-upload-list-item-name {
+  color: #255cc5 !important;
+}
+.app-modal .anticon-paper-clip {
+  color: #255cc5 !important;
+}
+
+.app-modal .anticon-delete {
+  color: #255cc5 !important;
+}
+
+.app-modal .modal-button .ant-form-item-control-input-content {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app-modal .modal-button .ant-form-item-control-input-content .modal-save {
+  background-color: #1a5a9b;
+  color: #ffffff;
+}
+
+.app-modal .modal-button .ant-form-item-control-input-content .modal-save:hover {
+  background-color: #ffffff;
+  border: 1px solid #1a5a9b;
+  color: #1a5a9b;
+}
+
+@media (max-width: 960px) {
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .app-main-container {
+    height: auto;
+    width: 100vw;
+  }
+}

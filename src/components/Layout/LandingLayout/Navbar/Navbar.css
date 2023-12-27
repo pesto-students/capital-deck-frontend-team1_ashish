@@ -1,0 +1,270 @@
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  height: 65px;
+  padding: 10px 0px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  color: white;
+  position: fixed;
+  width: 100vw;
+  z-index: 111;
+}
+
+.nav-logo {
+  margin-left: 50px;
+}
+
+.nav-menu {
+  margin-right: 50px;
+}
+
+.nav-menu-mobile {
+  display: inline-block;
+  margin-right: 50px;
+}
+
+.nav-menu > a {
+  margin-right: 15px;
+  color: #f4f4f4;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.nav-menu > a.active {
+  color: #ffffff;
+  font-weight: bold;
+  position: relative;
+}
+
+.nav-menu > a.active:after {
+  content: '';
+  position: absolute;
+  left: 25%;
+  bottom: -7px;
+  width: 50%;
+  border-bottom: 5px solid #ffffff;
+  border-radius: 5px;
+}
+
+.nav-menu > button {
+  margin-right: 15px;
+  color: #2c3e50;
+  background-color: #ffffff;
+  width: 110px;
+  height: 35px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-menu > button:hover {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  background-color: transparent;
+}
+
+.stickyNav {
+  position: sticky !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #093e74;
+  transition: all 0.25s ease;
+  z-index: 999;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.hamburger {
+  display: none;
+}
+
+.hamburgerClose {
+  z-index: 11;
+}
+
+.hamburgerClose .hamburger__Open {
+  background: transparent;
+  box-shadow: none;
+}
+
+.hamburgerClose .hamburger__Open::before,
+.hamburgerClose .hamburger__Open::after {
+  background-color: #ef476f;
+  width: 18px;
+  height: 2px;
+}
+
+.hamburgerClose .hamburger__Open::before {
+  transform: rotate(45deg);
+}
+
+.hamburgerClose .hamburger__Open::after {
+  transform: rotate(-45deg);
+}
+
+.mobileMenuOpen {
+  opacity: 1 !important;
+  visibility: visible !important;
+  width: 60% !important;
+  transition: 0.5s;
+  overflow-x: hidden;
+  all: unset;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  background-color: #002a48;
+  z-index: 1111;
+  overflow-y: auto;
+  left: 0;
+  box-shadow: 0 0 4px 2px rgb(0 0 0 / 35%);
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 70vw;
+  align-items: stretch;
+}
+
+.mobileMenuOpen > a {
+  font-size: 20px;
+  padding: 18px;
+}
+
+.mobileMenuOpen > a.active::after {
+  font-size: 26px;
+  padding: 25px;
+  content: '';
+  position: absolute;
+  left: 2%;
+  bottom: -5px;
+  width: 70%;
+  border-bottom: 5px solid #ffffff;
+  border-radius: 5px;
+}
+
+.mobileMenuOpen > button {
+  width: 130px;
+  height: 50px;
+  margin: 10px 15px;
+  font-size: 16px;
+}
+
+.mobileMenuClose {
+  width: 0;
+  transition: 0.2s;
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
+.nav-mob-logo {
+  display: none;
+}
+
+.mobileMenuOpen .nav-mob-logo {
+  display: block;
+  padding: 10px;
+}
+
+.mobileMenuOpen > * {
+  border-bottom: 1px solid #d7d7d763;
+}
+
+@media (max-width: 960px) {
+  .hamburger {
+    grid-row: 1/-1;
+    grid-column: 3/-1;
+    justify-self: end;
+    margin-left: 20px;
+    cursor: pointer;
+    justify-self: start;
+    width: 20px;
+    height: 18px;
+    display: grid;
+    place-content: center;
+    margin-right: 50px;
+  }
+
+  .hamburger__Open {
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 1px;
+    transition: all 0.6s ease-out;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hamburger__Open::before,
+  .hamburger__Open::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 1px;
+    transition: all 0.6s ease-out;
+  }
+
+  .hamburger__Open::before {
+    transform: translateY(-7px);
+  }
+
+  .hamburger__Open::after {
+    transform: translateY(7px);
+  }
+
+  .nav-menu {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .nav-menu > a > img {
+    height: 50px;
+    width: 150px;
+  }
+
+  .nav-mob-logo > a > img {
+    height: 50px;
+    width: 150px;
+  }
+
+  .home-overviewscreen {
+    margin: 130px 35px 35px 35px;
+  }
+
+  .mobileMenuOpen > a {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .mobileMenuOpen > button {
+    width: 120px;
+    height: 35px;
+    margin: 15px;
+    font-size: 14px;
+  }
+
+  .nav-logo {
+    margin-left: 35px;
+  }
+}

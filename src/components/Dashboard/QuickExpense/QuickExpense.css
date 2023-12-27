@@ -1,0 +1,26 @@
+.quick-expense {
+  background: linear-gradient(61.57deg, #e2604e -55.23%, #fcd8d8 97.15%);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.quick-expense .btn-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 22px;
+  margin-bottom: 10px;
+}
+
+.quick-expense .btn-text {
+  font-weight: bold;
+  font-size: 16px;
+}

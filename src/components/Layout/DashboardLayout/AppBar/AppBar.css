@@ -1,0 +1,107 @@
+.appbar-container {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  background-color: #093e74;
+  color: #ffffff;
+}
+
+.appbar-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 8vh;
+}
+
+.appbar-logo > a {
+  padding: 10px;
+  margin: 5px;
+}
+
+.appbar-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid #ffffffbd;
+  margin: 5px;
+  height: 16vh;
+}
+
+.appbar-user .userprofile_image {
+  display: flex;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+.appbar-user .userprofile_image > img {
+  border-radius: 30px;
+}
+
+.appbar-user p {
+  margin: 10px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.appbar-list {
+  display: flex;
+  flex-direction: column;
+  height: 66vh;
+}
+
+.appbar-list-main {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  border-bottom: 2px solid #ffffffbd;
+}
+
+.appbar-list-util {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.appbar-list-main > a,
+.appbar-list-util > a,
+.appbar-logout > a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.appbar-logout {
+  display: flex;
+  flex-direction: column;
+  height: 6vh;
+  margin: 5px;
+}
+
+.appbar-list-main > a > i,
+.appbar-list-util > a > i,
+.appbar-logout > a > i {
+  font-size: 25px;
+  margin-right: 20px;
+}
+
+.appbar-list-main > a > span,
+.appbar-list-util > a > span,
+.appbar-logout > a > span {
+  vertical-align: top;
+  line-height: 25px;
+}
+
+.dashboard-active {
+  background-color: #7da4cd69;
+}
+
+@media (max-width: 1260px) {
+  .appbar-container {
+    width: 22vw;
+  }
+}

@@ -1,0 +1,86 @@
+.app-userprofile-form {
+  display: flex;
+  width: 98%;
+  height: 98%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.userprofile-form {
+  display: flex;
+  flex-direction: column;
+  width: 35vw;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 35px 25px 15px;
+}
+
+.antd-user-form-mod {
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.option-user-form-mod {
+  height: auto;
+}
+
+.antd-user-form-item-mod {
+  height: 35px;
+  line-height: 45px;
+  width: -webkit-fill-available;
+}
+
+.antd-user-form-button-mod {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.save-user-button {
+  width: 30vw;
+  color: #ffffff;
+  height: 40px;
+  margin: 10px 0px 10px;
+  background-color: #1a5a9b;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.save-user-button:hover {
+  color: #1a5a9b !important;
+  background-color: #ffffff !important;
+}
+
+.app-userprofile-form .ant-upload-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  box-shadow: 0px 2px #b9b9b9;
+  margin: 0px 0px 20px 0px;
+}
+
+@media (max-width: 1090px) {
+  .userprofile-form {
+    width: 40vw;
+  }
+}
+
+@media (max-width: 960px) {
+  .userprofile-form {
+    width: 80vw;
+    padding: 35px 25px 15px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .save-user-button {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .userprofile-form .ant-radio-group > label {
+    margin-inline-end: 0px !important;
+  }
+}

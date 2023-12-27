@@ -1,0 +1,78 @@
+* {
+  font-family: 'Work Sans';
+  font-style: normal;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: space-between;
+}
+
+.common-container {
+  height: calc(100vh - 70px);
+}
+
+.login-bg {
+  background-image: url('./assets/background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home-bg {
+  background-color: #ffffff;
+}
+
+.app-bg {
+  background-color: #e5e5e5;
+}
+
+.loadingSpinnerContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #d1cccc26;
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingSpinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: rgb(9, 19, 127) transparent rgb(1, 109, 241) transparent;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+.ant-float-btn-body {
+  background-color: #1a5a9b !important;
+  border: 2px solid #073c71 !important;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
